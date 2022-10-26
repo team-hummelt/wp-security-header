@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="e5b19f41-aa52-4306-b92a-0d3395121cfe" name="Home" url="https://hupa.wiecker-web.de">
+        <fileTransfer rootFolder="/web/wp-content/plugins/wp-security-header" accessType="SFTP" host="192.168.188.3" port="22" sshConfigId="fe7fc7e3-8653-4ed8-a88f-0a316bdec3ce" sshConfig="sh1_hupa@192.168.188.3:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
