@@ -29,3 +29,7 @@
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
+
+delete_option('wp_security_reader_user_role');
+delete_option('wp-security-header_update_config');
+delete_option('wp-security-header-plugin_security_header');

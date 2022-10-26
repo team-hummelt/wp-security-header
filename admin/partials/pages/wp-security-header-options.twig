@@ -1,0 +1,35 @@
+{% extends "@partials-layout/admin-layout.twig" %}
+{% block content %}
+    <div class="border rounded shadow-sm p-3 bg-custom-gray mb-3" style="min-height: 65vh">
+        <form method="post" class="security-header-formular-data">
+            <hr>
+            <h6 class="card-title d-flex align-items-center">
+            <span>
+            <i class="show-cronjob-settings font-blue bi bi-arrow-down-circle"></i> {{ 'Minimum requirement for using this function'|__ }}
+                </span>
+                <span class="update_user_role ajax-status-spinner ms-auto"></span>
+            </h6>
+            <hr>
+            <div class="row pt-3 g-2">
+                <input type="hidden" name="method" value="update_user_role">
+                <div class="col-xl-6 col">
+                    <div class="mb-3">
+                        <label for="capabilitySelect" class="form-label mb-1 strong-font-weight">{{ 'User role'|__ }}
+                            :</label>
+                        <select name="user_role" id="capabilitySelect" class="form-select no-blur">
+                            {% for s in select_role %}
+                                <option value="{{ s.value }}"
+                                        {% if s.value == set_role %}selected{% endif %}>{{ s.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-blue">
+                <i class="bi bi-save2 me-1"></i>
+                {{ 'Save'|__ }}
+            </button>
+        </form>
+      <hr>
+    </div>
+{% endblock %}

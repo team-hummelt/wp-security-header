@@ -1,0 +1,12 @@
+{
+  "name": "wwdh/xlsx",
+  "type": "plugin",
+  "license": "MIT",
+  "description": "Erstellen Sie Header, Content Security Policy (CSP) und Permissions Policy. Automatische Erstellung von nonce für script-src.",
+  "homepage": "https://wwdh.de/",
+  "require": {
+    "php": "^7.4",
+    "twig/twig": "^3.3.4",
+    "yahnis-elsts/plugin-update-checker": "^4.11"
+  }
+}

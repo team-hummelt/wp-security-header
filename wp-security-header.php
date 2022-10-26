@@ -15,14 +15,17 @@
  * @wordpress-plugin
  * Plugin Name:       WP Security Header
  * Plugin URI:        https://www.hummelt-werbeagentur.de/
- * Description:       Erstellen Sie Header, Content Security Policy (CSP) und Permissions Policy. Automatische Erstellung von nonce für script-src.
+ * Description:       Create header, content security policy (CSP) and permissions policy. Automatically create nonce for script-src.
  * Version:           1.0.0
  * Author:            Jens Wiecker
  * Author URI:        https://wwdh.de
- * License:           GPL-2.0+
- * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ * License:           MIT License
  * Text Domain:       wp-security-header
  * Domain Path:       /languages
+ * Requires PHP:      7.4
+ * Requires at least: 5.4
+ * Tested up to:      6.0.3
+ * Stable tag:        1.0.0
  */
 
 // If this file is called directly, abort.
@@ -31,12 +34,25 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 /**
- * Currently plugin version.
- * Start at version 1.0.0 and use SemVer - https://semver.org
- * Rename this for your plugin and update it as you release new versions.
+ * Plugin Database-Version.
  */
-define( 'WP_SECURITY_HEADER_VERSION', '1.0.0' );
-
+const WP_SECURITY_HEADER_DB_VERSION = '1.0.0';
+/**
+ * PHP minimum requirement for the plugin.
+ */
+const WP_SECURITY_HEADER_MIN_PHP_VERSION = '7.4';
+/**
+ * WordPress minimum requirement for the plugin.
+ */
+const WP_SECURITY_HEADER_MIN_WP_VERSION = '5.6';
+/**
+ * PLUGIN SLUG.
+ */
+define('WP_SECURITY_HEADER_SLUG_PATH', plugin_basename(__FILE__));
+/**
+ * PLUGIN Basename.
+ */
+define('WP_SECURITY_HEADER_BASENAME', plugin_basename(__DIR__));
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-wp-security-header-activator.php
@@ -74,9 +90,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-wp-security-header.php';
  * @since    1.0.0
  */
 function run_wp_security_header() {
-
 	$plugin = new Wp_Security_Header();
 	$plugin->run();
-
 }
 run_wp_security_header();

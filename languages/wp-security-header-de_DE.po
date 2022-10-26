@@ -1,0 +1,207 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2022-10-27 00:37+0200\n"
+"PO-Revision-Date: 2022-10-27 00:37+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;esc_html__;esc_att;esc_attr__;esc_attr_e\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: admin/tools/sweetalert2\n"
+
+#: admin/ajax/class_wp_security_header_ajax.php:129
+#: admin/ajax/class_wp_security_header_ajax.php:164
+#: admin/ajax/class_wp_security_header_ajax.php:171
+#: admin/ajax/class_wp_security_header_ajax.php:201
+#: admin/ajax/class_wp_security_header_ajax.php:208
+#: admin/ajax/class_wp_security_header_ajax.php:247
+#: includes/traits/WpSecurityHeaderTrait.php:316
+msgid "Error"
+msgstr "Fehler"
+
+#: admin/ajax/class_wp_security_header_ajax.php:130
+#: admin/ajax/class_wp_security_header_ajax.php:165
+#: admin/ajax/class_wp_security_header_ajax.php:172
+#: admin/ajax/class_wp_security_header_ajax.php:202
+#: admin/ajax/class_wp_security_header_ajax.php:209
+#: admin/ajax/class_wp_security_header_ajax.php:248
+#: includes/traits/WpSecurityHeaderTrait.php:315
+msgid "Ajax transmission error"
+msgstr "Ajax-Übermittlungsfehler"
+
+#: admin/ajax/class_wp_security_header_ajax.php:255
+#: includes/traits/WpSecurityHeaderTrait.php:317
+msgid "Saved"
+msgstr "Gespeichert"
+
+#: admin/ajax/class_wp_security_header_ajax.php:256
+#: includes/traits/WpSecurityHeaderTrait.php:318
+msgid "Changes saved successfully."
+msgstr "Änderungen erfolgreich gespeichert."
+
+#: admin/ajax/class_wp_security_header_ajax.php:262
+#: includes/traits/WpSecurityHeaderTrait.php:284
+msgid "Settings reset!"
+msgstr "Einstellungen zurückgesetzt!"
+
+#: admin/class-wp-security-header-admin.php:88
+#: admin/class-wp-security-header-admin.php:89
+#: admin/class-wp-security-header-admin.php:100
+#: admin/class-wp-security-header-admin.php:101
+#: admin/class-wp-security-header-admin.php:164
+#: admin/class-wp-security-header-admin.php:182
+#: includes/traits/WpSecurityHeaderTrait.php:307
+msgid "Security Header"
+msgstr "Security Header"
+
+#: admin/class-wp-security-header-admin.php:131
+#: admin/class-wp-security-header-admin.php:166
+#: admin/class-wp-security-header-admin.php:184
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: admin/srv-api/class_srv_api_endpoint.php:179
+msgid "Method not found."
+msgstr "Methode nicht gefunden."
+
+#: includes/class-wp-security-header.php:336
+#, php-format
+msgid ""
+"This plugin has been disabled because it requires a PHP version greater than "
+"%s and a WordPress version greater than %s. Your PHP version can be updated "
+"by your hosting provider."
+msgstr ""
+"Dieses Plugin wurde deaktiviert, weil es eine PHP-Version größer als %s und "
+"eine WordPress-Version größer als %s benötigt. Ihre PHP-Version kann von "
+"Ihrem Hosting-Anbieter aktualisiert werden."
+
+#: includes/traits/WpSecurityHeaderTrait.php:248
+msgid "Subscriber"
+msgstr "Abonnent"
+
+#: includes/traits/WpSecurityHeaderTrait.php:252
+msgid "Contributor"
+msgstr "Redakteur"
+
+#: includes/traits/WpSecurityHeaderTrait.php:256
+msgid "Author"
+msgstr "Autor"
+
+#: includes/traits/WpSecurityHeaderTrait.php:260
+msgid "Editor"
+msgstr "Redakteur"
+
+#: includes/traits/WpSecurityHeaderTrait.php:264
+msgid "Administrator"
+msgstr "Administrator"
+
+#: includes/traits/WpSecurityHeaderTrait.php:269
+msgid "Please check entries."
+msgstr "Bitte Eingaben überprüfen."
+
+#: includes/traits/WpSecurityHeaderTrait.php:271
+msgid "Delete header entry"
+msgstr "Header Eintrag löschen"
+
+#: includes/traits/WpSecurityHeaderTrait.php:273
+msgid ""
+"<span class=\"swal-delete-body\">The header entry will <b>be deleted "
+"irrevocably!</b> The deletion <b>cannot</b> be undone.</span>"
+msgstr ""
+"<span class=\"swal-delete-body\">Der Header Eintrag wird <b>unwiderruflich "
+"gelöscht!</b> Das Löschen kann <b>nicht</b> rückgängig gemacht werden.</span>"
+
+#: includes/traits/WpSecurityHeaderTrait.php:275
+msgid "Enter PIN"
+msgstr "PIN eingeben"
+
+#: includes/traits/WpSecurityHeaderTrait.php:277
+msgid "Enter the PIN for deletion."
+msgstr "Geben Sie den PIN zum löschen ein."
+
+#: includes/traits/WpSecurityHeaderTrait.php:279
+msgid "The PIN entered is incorrect!"
+msgstr "Der eingegebene PIN ist falsch!"
+
+#: includes/traits/WpSecurityHeaderTrait.php:280
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: includes/traits/WpSecurityHeaderTrait.php:282
+msgid ""
+"All values are <b>reset!</b> The changes <b>cannot</b> be undone.<br><br>"
+msgstr ""
+"Alle Werte werden <b>zurückgesetzt!</b> Die Änderungen können <b>nicht</b> "
+"rückgängig gemacht werden.<br><br>"
+
+#: includes/traits/WpSecurityHeaderTrait.php:286
+msgid "Reset settings?"
+msgstr "Einstellungen zurücksetzen?"
+
+#: includes/traits/WpSecurityHeaderTrait.php:288
+msgid "Reset all settings"
+msgstr "Alle Einstellungen zurücksetzen"
+
+#: includes/traits/WpSecurityHeaderTrait.php:306
+msgid "sections"
+msgstr "Sektionen"
+
+#: includes/traits/WpSecurityHeaderTrait.php:308
+msgid "Save"
+msgstr "Speichern"
+
+#: includes/traits/WpSecurityHeaderTrait.php:310
+msgid "add new value"
+msgstr "neuen Wert hinzufügen"
+
+#: includes/traits/WpSecurityHeaderTrait.php:312
+msgid "is the placeholder for nonce"
+msgstr "ist der Platzhalter für nonce"
+
+#: includes/traits/WpSecurityHeaderTrait.php:313
+msgid "Restore default"
+msgstr "Standard wiederherstellen"
+
+#: includes/traits/WpSecurityHeaderTrait.php:314
+msgid "active"
+msgstr "aktiv"
+
+#: includes/traits/WpSecurityHeaderTrait.php:319
+msgid "Minimum requirement for using this function"
+msgstr "Mindestvoraussetzung für die Verwendung dieses Plugins"
+
+#: includes/traits/WpSecurityHeaderTrait.php:320
+msgid "User role"
+msgstr "Benutzerrolle"
+
+#: includes/vendor/yahnis-elsts/plugin-update-checker/Puc/v4p13/Plugin/Ui.php:54
+msgid "View details"
+msgstr "Details anzeigen"
+
+#: includes/vendor/yahnis-elsts/plugin-update-checker/Puc/v4p13/Plugin/Ui.php:77
+#, php-format
+msgid "More information about %s"
+msgstr "Weitere Informationen über %s"
+
+#: includes/vendor/yahnis-elsts/plugin-update-checker/Puc/v4p13/Plugin/Ui.php:128
+msgid "Check for updates"
+msgstr "Nach Aktualisierungen suchen"
+
+#: includes/vendor/yahnis-elsts/plugin-update-checker/Puc/v4p13/Plugin/Ui.php:224
+#, php-format
+msgid "Unknown update checker status \"%s\""
+msgstr "Unbekannter Update-Checker-Status \"%s\""
+
+#: includes/vendor/yahnis-elsts/plugin-update-checker/Puc/v4p13/Vcs/PluginUpdateChecker.php:100
+msgid "There is no changelog available."
+msgstr "Es ist kein Change Log verfügbar."
+
+#~ msgid "Alle Einstellungen zurücksetzen"
+#~ msgstr "Alle Einstellungen zurücksetzen"

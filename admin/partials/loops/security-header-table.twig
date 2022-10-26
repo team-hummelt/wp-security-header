@@ -1,0 +1,44 @@
+{% for t in d.table %}
+<div id="header{{ t.id }}" class="row g-2 align-items-center mb-2">
+    <div class="col-xxl-2 col-xl-3 col-lg-4 col-md-6 col-12">
+        <input type="hidden" name="id[]" value="{{ t.id }}">
+        <div class="form-floating">
+            <input type="text" class="form-control form-control-sm no-blur" name="wert[]" value="{{ t.name }}"
+                   id="headerWert{{ d.id }}-{{ t.id }}">
+            <label for="headerWert{{ d.id }}-{{ t.id }}">{{ 'Header'|__ }}</label>
+        </div>
+
+    </div>
+    <div class="col-xxl-8 col-xl-7 col-lg-6 col-md-6">
+        <div class="form-floating">
+            <input type="text" class="form-control form-control-sm no-blur" name="value[]" value="{{ t.value }}"
+                   id="headerValue{{ d.id }}-{{ t.id }}">
+            <label for="headerValue{{ d.id }}-{{ t.id }}">{{ 'Value'|__ }}
+                {% if t.name == 'script-src' %}
+                    (<span class="text-danger">%s</span> {{ 'is the placeholder for nonce'|__ }})
+                {% endif %}
+            </label>
+        </div>
+    </div>
+    <div class="col-lg-2 col-md-12" >
+        <div class="row g-2 align-items-center">
+            <div class="col-md-6 col-4 text-md-center text-start">
+                <div class="form-check d-inline-block">
+                    <input class="form-check-input no-blur" type="checkbox" name="aktiv[{{ t.id }}]"
+                           id="headerActive{{ d.id }}-{{ t.id }}" {% if t.aktiv %}checked{% endif %}>
+                    <label class="form-check-label" for="headerActive{{ d.id }}-{{ t.id }}">
+                        {{ 'active'|__ }}
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-6 col-4  text-md-center text-start">
+                <label  class="form-label col-form-label-sm mb-0">&nbsp;</label>
+                <button data-type="delete-security-header" data-handle="{{ d.id }}" data-id="{{ t.id }}"
+                        type="button" class="sh-plugin-action btn btn-outline-danger btn-sm">
+                    <i class="bi bi-trash"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
