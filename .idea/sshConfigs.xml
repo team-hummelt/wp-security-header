@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="SshConfigs">
-    <configs>
-      <sshConfig host="192.168.188.3" id="fe7fc7e3-8653-4ed8-a88f-0a316bdec3ce" keyPath="H:\PHP-Projekte\wiecker-web.de\ssh-key\sh1_wieckerprivate_key.ppk" port="22" nameFormat="DESCRIPTIVE" username="sh1_hupa" useOpenSSHConfig="true" />
-    </configs>
-  </component>
-</project>

@@ -1,0 +1,12 @@
+{% extends "@partials-layout/admin-layout.twig" %}
+{% block content %}
+    <div class="pb-3">
+        <button data-type="load-default-security-header"
+                class="sh-plugin-action btn btn-outline-secondary">
+            <i class="bi bi-exclamation-triangle me-1"></i>
+            {{ 'Restore default'|__ }}
+        </button>
+    </div>
+    {{ include('@partials-loops/security-header-table-loop.twig') }}
+{% endblock %}
+

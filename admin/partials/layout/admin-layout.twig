@@ -1,0 +1,29 @@
+<div id="wp-security-header" class="wp-security-header">
+    <div class="container">
+        <div class="position-relative py-3 px-xl-5 px-lg-4 px-3">
+            <div class="card shadow-sm">
+                <div class="card-header fs-4 py-4">
+                    <div class="d-flex align-items-center">
+                        <i class="bi bi-shield-check font-blue fs-4 me-2"></i>
+                        {{ title }}
+                    </div>
+                </div>
+                <div class="card-body">
+                    {% block content %}{% endblock %}
+                </div>
+                <div class="position-absolute end-0 bottom-0 mb-1 me-4">
+                    <small class="small-xl">
+                        DB: <span class="text-danger">v{{ db }}</span>
+                        | </small>
+                    <small class="small-xl">
+                        Version: <span class="text-danger">v{{ version }}</span>
+                    </small>
+                </div>
+            </div>
+        </div>
+        <div id="snackbar-success"></div>
+        <div id="snackbar-warning"></div>
+    </div>
+</div>
+
+
