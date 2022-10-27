@@ -27,26 +27,28 @@ use WPSecurity\Header\WpSecurityHeaderTrait;
  * @subpackage Wp_Security_Header/admin
  * @author     Jens Wiecker <email@jenswiecker.de>
  */
-class Wp_Security_Header_Admin {
+class Wp_Security_Header_Admin
+{
 
     use WpSecurityHeaderTrait;
-	/**
-	 * The ID of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 * @var      string    $basename    The ID of this plugin.
-	 */
-	private string $basename;
 
-	/**
-	 * The version of this plugin.
-	 *
-	 * @since    1.0.0
-	 * @access   private
-	 * @var      string    $version    The current version of this plugin.
-	 */
-	private string $version;
+    /**
+     * The ID of this plugin.
+     *
+     * @since    1.0.0
+     * @access   private
+     * @var      string $basename The ID of this plugin.
+     */
+    private string $basename;
+
+    /**
+     * The version of this plugin.
+     *
+     * @since    1.0.0
+     * @access   private
+     * @var      string $version The current version of this plugin.
+     */
+    private string $version;
 
     /**
      * Store plugin main class to allow public access.
@@ -67,44 +69,47 @@ class Wp_Security_Header_Admin {
      */
     private Environment $twig;
 
-	/**
-	 * Initialize the class and set its properties.
-	 *
-	 * @param      string    $plugin_name The name of this plugin.
-	 * @param string $version    The version of this plugin.
-	 *@since    1.0.0
-	 */
-	public function __construct(string $plugin_name, string $version, Wp_Security_Header $main, Environment $twig ) {
+    /**
+     * Initialize the class and set its properties.
+     *
+     * @param string $plugin_name The name of this plugin.
+     * @param string $version The version of this plugin.
+     * @since    1.0.0
+     */
+    public function __construct(string $plugin_name, string $version, Wp_Security_Header $main, Environment $twig)
+    {
 
-		$this->basename = $plugin_name;
-		$this->version = $version;
+        $this->basename = $plugin_name;
+        $this->version = $version;
         $this->main = $main;
         $this->twig = $twig;
-	}
+    }
 
     public function register_security_header_menu()
     {
+
         $hook_suffix = add_menu_page(
             __('Security Header', 'wp-security-header'),
             __('Security Header', 'wp-security-header'),
-            get_option($this->basename.'_user_role'),
+            get_option($this->basename . '_user_role'),
             'wp-security-header-start',
             array($this, 'admin_wp_security_header_startpage'),
             self::get_svg_icons('shield'), 116
         );
 
         add_action('load-' . $hook_suffix, array($this, 'wp_security_header_load_ajax_admin_options_script'));
+        if (get_option("{$this->basename}_update_config")->aktiv) {
+            //Options Page
+            $hook_suffix = add_options_page(
+                __('Security Header', 'wp-security-header'),
+                __('Security Header', 'wp-security-header'),
+                get_option($this->basename . '_user_role'),
+                'wp-security-header-options',
+                array($this, 'admin_wp_security_header_options_page')
+            );
 
-        //Options Page
-        $hook_suffix = add_options_page(
-            __('Security Header', 'wp-security-header'),
-            __('Security Header', 'wp-security-header'),
-            get_option($this->basename.'_user_role'),
-            'wp-security-header-options',
-            array($this, 'admin_wp_security_header_options_page')
-        );
-
-        add_action('load-' . $hook_suffix, array($this, 'wp_security_header_load_ajax_admin_options_script'));
+            add_action('load-' . $hook_suffix, array($this, 'wp_security_header_load_ajax_admin_options_script'));
+        }
     }
 
     /**
@@ -134,13 +139,13 @@ class Wp_Security_Header_Admin {
         );
     }
 
-    public function admin_wp_security_header_startpage() :void
+    public function admin_wp_security_header_startpage(): void
     {
-        if(!get_option($this->basename.'-plugin_security_header')) {
+        if (!get_option($this->basename . '-plugin_security_header')) {
             $header = $this->wp_security_headers_default_settings('header');
-            update_option($this->basename.'-plugin_security_header', $header);
+            update_option($this->basename . '-plugin_security_header', $header);
         }
-        $headers = get_option($this->basename.'-plugin_security_header');
+        $headers = get_option($this->basename . '-plugin_security_header');
         $items = [
             '0' => [
                 'bezeichnung' => 'Header',
@@ -164,7 +169,8 @@ class Wp_Security_Header_Admin {
             'title' => __('Security Header', 'wp-security-header'),
             'db' => $this->main->get_db_version(),
             'second_title' => __('Settings', 'wp-security-header'),
-            'data' => $items
+            'data' => $items,
+            'plugin_aktiv' => get_option("{$this->basename}_update_config")->aktiv
         ];
         try {
             echo $this->main->get_twig()->render('@partials-templates/security-header-template.twig', $twigData);
@@ -175,16 +181,17 @@ class Wp_Security_Header_Admin {
         }
     }
 
-    public function admin_wp_security_header_options_page():void
+    public function admin_wp_security_header_options_page(): void
     {
         $twigData = [
             'version' => $this->version,
             'title' => __('Security Header', 'wp-security-header'),
             'db' => $this->main->get_db_version(),
             'second_title' => __('Settings', 'wp-security-header'),
-            'select_role' =>  $this->wp_security_headers_default_settings('select_user_role'),
-            'set_role' => get_option($this->basename.'_user_role'),
-            'ds' => get_option($this->basename.'_csp_settings')
+            'select_role' => $this->wp_security_headers_default_settings('select_user_role'),
+            'set_role' => get_option($this->basename . '_user_role'),
+            'ds' => get_option($this->basename . '_csp_settings'),
+            'plugin_aktiv' => get_option("{$this->basename}_update_config")->aktiv
         ];
         try {
             echo $this->main->get_twig()->render('@partials-page/wp-security-header-options.twig', $twigData);
@@ -195,7 +202,7 @@ class Wp_Security_Header_Admin {
         }
     }
 
-    public function wp_security_header_load_ajax_admin_options_script ():void
+    public function wp_security_header_load_ajax_admin_options_script(): void
     {
         add_action('admin_enqueue_scripts', array($this, 'enqueue_scripts'));
         $title_nonce = wp_create_nonce('wp_security_admin_handle');
@@ -264,47 +271,49 @@ class Wp_Security_Header_Admin {
         }
     }
 
-	/**
-	 * Register the stylesheets for the admin area.
-	 *
-	 * @since    1.0.0
-	 */
-	public function enqueue_styles() {
+    /**
+     * Register the stylesheets for the admin area.
+     *
+     * @since    1.0.0
+     */
+    public function enqueue_styles()
+    {
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Wp_Security_Header_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Wp_Security_Header_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
+        /**
+         * This function is provided for demonstration purposes only.
+         *
+         * An instance of this class should be passed to the run() function
+         * defined in Wp_Security_Header_Loader as all of the hooks are defined
+         * in that particular class.
+         *
+         * The Wp_Security_Header_Loader will then create the relationship
+         * between the defined hooks and the functions defined in this
+         * class.
+         */
 
-		wp_enqueue_style( $this->basename, plugin_dir_url( __FILE__ ) . 'css/wp-security-header-admin.css', array(), $this->version, 'all' );
+        wp_enqueue_style($this->basename, plugin_dir_url(__FILE__) . 'css/wp-security-header-admin.css', array(), $this->version, 'all');
 
-	}
+    }
 
-	/**
-	 * Register the JavaScript for the admin area.
-	 *
-	 * @since    1.0.0
-	 */
-	public function enqueue_scripts() {
+    /**
+     * Register the JavaScript for the admin area.
+     *
+     * @since    1.0.0
+     */
+    public function enqueue_scripts()
+    {
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Wp_Security_Header_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Wp_Security_Header_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
+        /**
+         * This function is provided for demonstration purposes only.
+         *
+         * An instance of this class should be passed to the run() function
+         * defined in Wp_Security_Header_Loader as all of the hooks are defined
+         * in that particular class.
+         *
+         * The Wp_Security_Header_Loader will then create the relationship
+         * between the defined hooks and the functions defined in this
+         * class.
+         */
         wp_enqueue_style($this->basename . '-bootstrap-icons', plugin_dir_url(__FILE__) . 'bs/bs-icons/bootstrap-icons.css', array(), $this->version, 'all');
         wp_enqueue_style($this->basename . '-sweetalert2', plugin_dir_url(__FILE__) . 'tools/sweetalert2/sweetalert2.min.css', array(), $this->version, 'all');
         wp_enqueue_style($this->basename . '-animate', plugin_dir_url(__FILE__) . 'css/animate.min.css', array(), $this->version, 'all');
@@ -314,10 +323,11 @@ class Wp_Security_Header_Admin {
         wp_enqueue_script($this->basename . '-bootstrap-bundle', plugin_dir_url(__FILE__) . 'bs/bootstrap.bundle.min.js', array(), $this->version, true);
         wp_enqueue_script($this->basename . '-sweetalert2', plugin_dir_url(__FILE__) . 'tools/sweetalert2/sweetalert2.all.min.js', array(), $this->version, true);
 
-        wp_enqueue_script( $this->basename.'-main', plugin_dir_url( __FILE__ ) . 'js/main.js', array( 'jquery' ), $this->version, false );
-        wp_enqueue_script( $this->basename, plugin_dir_url( __FILE__ ) . 'js/wp-security-header-admin.js', array( 'jquery' ), $this->version, false );
+        wp_enqueue_script($this->basename . '-main', plugin_dir_url(__FILE__) . 'js/main.js', array('jquery'), $this->version, false);
+        wp_enqueue_script($this->basename, plugin_dir_url(__FILE__) . 'js/wp-security-header-admin.js', array('jquery'), $this->version, false);
 
-	}
+    }
+
     /**
      * @param $name
      *

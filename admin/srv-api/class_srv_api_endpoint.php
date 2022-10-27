@@ -1,15 +1,16 @@
 <?php
 
-namespace FBApiPlugin\SrvApi\Endpoint;
+namespace WPSecurity\Header\Endpoint;
 
 use stdClass;
 use WP_Error;
-use Wp_Facebook_Importer;
+use Wp_Security_Header;
 use WP_REST_Controller;
 use WP_REST_Request;
 use WP_REST_Response;
 use WP_REST_Server;
-use WPFacebook\Importer\WP_Facebook_Importer_Defaults;
+use WPSecurity\Header\WpSecurityHeaderTrait;
+
 
 /**
  * SRV-API ENDPOINT
@@ -30,9 +31,9 @@ class Srv_Api_Endpoint extends WP_REST_Controller
      *
      * @since    1.0.0
      * @access   private
-     * @var Wp_Facebook_Importer $main The main class.
+     * @var Wp_Security_Header $main The main class.
      */
-    private Wp_Facebook_Importer $main;
+    private Wp_Security_Header $main;
 
     /**
      * The ID of this plugin.
@@ -57,9 +58,9 @@ class Srv_Api_Endpoint extends WP_REST_Controller
      *
      * @since    1.0.0
      */
-    use WP_Facebook_Importer_Defaults;
+    use WpSecurityHeaderTrait;
 
-    public function __construct($plugin_name, $plugin_version, Wp_Facebook_Importer $main)
+    public function __construct($plugin_name, $plugin_version, Wp_Security_Header $main)
     {
         $this->main = $main;
         $this->basename = $plugin_name;
@@ -92,7 +93,7 @@ class Srv_Api_Endpoint extends WP_REST_Controller
             $base . '(?P<method>[\S^/]+)',
             array(
                 'methods' => WP_REST_Server::READABLE,
-                'callback' => array($this, 'fb_importer_api_rest_endpoint'),
+                'callback' => array($this, 'wp_security_header_api_rest_endpoint'),
                 'permission_callback' => array($this, 'permissions_check')
             )
         );
@@ -101,7 +102,7 @@ class Srv_Api_Endpoint extends WP_REST_Controller
             $base . '(?P<method>[\S^/]+)',
             array(
                 'methods' => 'POST',
-                'callback' => array($this, 'fb_importer_api_rest_post_endpoint'),
+                'callback' => array($this, 'wp_security_header_api_rest_post_endpoint'),
                 'permission_callback' => array($this, 'permissions_check')
             )
         );
@@ -123,7 +124,7 @@ class Srv_Api_Endpoint extends WP_REST_Controller
 
     }
 
-    public function fb_importer_api_rest_post_endpoint(WP_REST_Request $request) {
+    public function wp_security_header_api_rest_post_endpoint(WP_REST_Request $request) {
         $data = $this->get_item($request);
         return rest_ensure_response($data);
     }
@@ -136,7 +137,7 @@ class Srv_Api_Endpoint extends WP_REST_Controller
      */
 
 
-    public function fb_importer_api_rest_endpoint()
+    public function wp_security_header_api_rest_endpoint()
     {
         $response = new WP_REST_Response();
         $data = [
@@ -178,7 +179,6 @@ class Srv_Api_Endpoint extends WP_REST_Controller
             default:
                 return new WP_Error('rest_update_failed', __('Method not found.'), array('status' => 404));
         }
-
     }
 
 

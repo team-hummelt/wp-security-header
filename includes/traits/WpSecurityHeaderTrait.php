@@ -318,6 +318,8 @@ trait WpSecurityHeaderTrait
                 'reset_settings' => __('Reset settings?', 'wp-security-header'),
                 //Alle Einstellungen zurücksetzen
                 'reset_all_settings' => __('Reset all settings', 'wp-security-header'),
+                __('Plugin has been disabled.','wp-security-header'),
+                __('Contact the support.' ,'wp-security-header')
 
             ],
         ];

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2022-10-27 16:22+0200\n"
-"PO-Revision-Date: 2022-10-27 16:23+0200\n"
+"POT-Creation-Date: 2022-10-27 20:02+0200\n"
+"PO-Revision-Date: 2022-10-27 20:03+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -23,7 +23,7 @@ msgstr ""
 #: admin/ajax/class_wp_security_header_ajax.php:209
 #: admin/ajax/class_wp_security_header_ajax.php:248
 #: admin/ajax/class_wp_security_header_ajax.php:268
-#: includes/traits/WpSecurityHeaderTrait.php:316
+#: includes/traits/WpSecurityHeaderTrait.php:350
 msgid "Error"
 msgstr "Fehler"
 
@@ -34,50 +34,50 @@ msgstr "Fehler"
 #: admin/ajax/class_wp_security_header_ajax.php:210
 #: admin/ajax/class_wp_security_header_ajax.php:249
 #: admin/ajax/class_wp_security_header_ajax.php:269
-#: includes/traits/WpSecurityHeaderTrait.php:315
+#: includes/traits/WpSecurityHeaderTrait.php:349
 msgid "Ajax transmission error"
 msgstr "Ajax-Übermittlungsfehler"
 
 #: admin/ajax/class_wp_security_header_ajax.php:194
 #: admin/ajax/class_wp_security_header_ajax.php:256
-#: admin/ajax/class_wp_security_header_ajax.php:275
-#: includes/traits/WpSecurityHeaderTrait.php:317
+#: admin/ajax/class_wp_security_header_ajax.php:288
+#: includes/traits/WpSecurityHeaderTrait.php:351
 msgid "Saved"
 msgstr "Gespeichert"
 
 #: admin/ajax/class_wp_security_header_ajax.php:195
 #: admin/ajax/class_wp_security_header_ajax.php:257
-#: admin/ajax/class_wp_security_header_ajax.php:276
-#: includes/traits/WpSecurityHeaderTrait.php:318
+#: admin/ajax/class_wp_security_header_ajax.php:289
+#: includes/traits/WpSecurityHeaderTrait.php:352
 msgid "Changes saved successfully."
 msgstr "Änderungen erfolgreich gespeichert."
 
 #: admin/ajax/class_wp_security_header_ajax.php:263
-#: includes/traits/WpSecurityHeaderTrait.php:284
+#: includes/traits/WpSecurityHeaderTrait.php:316
 msgid "Settings reset!"
 msgstr "Einstellungen zurückgesetzt!"
 
-#: admin/class-wp-security-header-admin.php:88
-#: admin/class-wp-security-header-admin.php:89
-#: admin/class-wp-security-header-admin.php:100
-#: admin/class-wp-security-header-admin.php:101
-#: admin/class-wp-security-header-admin.php:164
-#: admin/class-wp-security-header-admin.php:182
-#: includes/traits/WpSecurityHeaderTrait.php:307
+#: admin/class-wp-security-header-admin.php:92
+#: admin/class-wp-security-header-admin.php:93
+#: admin/class-wp-security-header-admin.php:104
+#: admin/class-wp-security-header-admin.php:105
+#: admin/class-wp-security-header-admin.php:169
+#: admin/class-wp-security-header-admin.php:188
+#: includes/traits/WpSecurityHeaderTrait.php:341
 msgid "Security Header"
 msgstr "Security Header"
 
-#: admin/class-wp-security-header-admin.php:131
-#: admin/class-wp-security-header-admin.php:166
-#: admin/class-wp-security-header-admin.php:184
+#: admin/class-wp-security-header-admin.php:136
+#: admin/class-wp-security-header-admin.php:171
+#: admin/class-wp-security-header-admin.php:190
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: admin/srv-api/class_srv_api_endpoint.php:179
+#: admin/srv-api/class_srv_api_endpoint.php:180
 msgid "Method not found."
 msgstr "Methode nicht gefunden."
 
-#: includes/class-wp-security-header.php:336
+#: includes/class-wp-security-header.php:344
 #, php-format
 msgid ""
 "This plugin has been disabled because it requires a PHP version greater than "
@@ -88,35 +88,35 @@ msgstr ""
 "eine WordPress-Version größer als %s benötigt. Ihre PHP-Version kann von "
 "Ihrem Hosting-Anbieter aktualisiert werden."
 
-#: includes/traits/WpSecurityHeaderTrait.php:248
+#: includes/traits/WpSecurityHeaderTrait.php:280
 msgid "Subscriber"
 msgstr "Abonnent"
 
-#: includes/traits/WpSecurityHeaderTrait.php:252
+#: includes/traits/WpSecurityHeaderTrait.php:284
 msgid "Contributor"
 msgstr "Redakteur"
 
-#: includes/traits/WpSecurityHeaderTrait.php:256
+#: includes/traits/WpSecurityHeaderTrait.php:288
 msgid "Author"
 msgstr "Autor"
 
-#: includes/traits/WpSecurityHeaderTrait.php:260
+#: includes/traits/WpSecurityHeaderTrait.php:292
 msgid "Editor"
 msgstr "Redakteur"
 
-#: includes/traits/WpSecurityHeaderTrait.php:264
+#: includes/traits/WpSecurityHeaderTrait.php:296
 msgid "Administrator"
 msgstr "Administrator"
 
-#: includes/traits/WpSecurityHeaderTrait.php:269
+#: includes/traits/WpSecurityHeaderTrait.php:301
 msgid "Please check entries."
 msgstr "Bitte Eingaben überprüfen."
 
-#: includes/traits/WpSecurityHeaderTrait.php:271
+#: includes/traits/WpSecurityHeaderTrait.php:303
 msgid "Delete header entry"
 msgstr "Header Eintrag löschen"
 
-#: includes/traits/WpSecurityHeaderTrait.php:273
+#: includes/traits/WpSecurityHeaderTrait.php:305
 msgid ""
 "<span class=\"swal-delete-body\">The header entry will <b>be deleted "
 "irrevocably!</b> The deletion <b>cannot</b> be undone.</span>"
@@ -124,92 +124,100 @@ msgstr ""
 "<span class=\"swal-delete-body\">Der Header Eintrag wird <b>unwiderruflich "
 "gelöscht!</b> Das Löschen kann <b>nicht</b> rückgängig gemacht werden.</span>"
 
-#: includes/traits/WpSecurityHeaderTrait.php:275
+#: includes/traits/WpSecurityHeaderTrait.php:307
 msgid "Enter PIN"
 msgstr "PIN eingeben"
 
-#: includes/traits/WpSecurityHeaderTrait.php:277
+#: includes/traits/WpSecurityHeaderTrait.php:309
 msgid "Enter the PIN for deletion."
 msgstr "Geben Sie den PIN zum löschen ein."
 
-#: includes/traits/WpSecurityHeaderTrait.php:279
+#: includes/traits/WpSecurityHeaderTrait.php:311
 msgid "The PIN entered is incorrect!"
 msgstr "Der eingegebene PIN ist falsch!"
 
-#: includes/traits/WpSecurityHeaderTrait.php:280
+#: includes/traits/WpSecurityHeaderTrait.php:312
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: includes/traits/WpSecurityHeaderTrait.php:282
+#: includes/traits/WpSecurityHeaderTrait.php:314
 msgid ""
 "All values are <b>reset!</b> The changes <b>cannot</b> be undone.<br><br>"
 msgstr ""
 "Alle Werte werden <b>zurückgesetzt!</b> Die Änderungen können <b>nicht</b> "
 "rückgängig gemacht werden.<br><br>"
 
-#: includes/traits/WpSecurityHeaderTrait.php:286
+#: includes/traits/WpSecurityHeaderTrait.php:318
 msgid "Reset settings?"
 msgstr "Einstellungen zurücksetzen?"
 
-#: includes/traits/WpSecurityHeaderTrait.php:288
+#: includes/traits/WpSecurityHeaderTrait.php:320
 msgid "Reset all settings"
 msgstr "Alle Einstellungen zurücksetzen"
 
-#: includes/traits/WpSecurityHeaderTrait.php:306
+#: includes/traits/WpSecurityHeaderTrait.php:321
+msgid "Plugin has been disabled."
+msgstr "Plugin wurde deaktiviert."
+
+#: includes/traits/WpSecurityHeaderTrait.php:322
+msgid "Contact the support."
+msgstr "Melden Sie sich beim Support."
+
+#: includes/traits/WpSecurityHeaderTrait.php:340
 msgid "sections"
 msgstr "Sektionen"
 
-#: includes/traits/WpSecurityHeaderTrait.php:308
+#: includes/traits/WpSecurityHeaderTrait.php:342
 msgid "Save"
 msgstr "Speichern"
 
-#: includes/traits/WpSecurityHeaderTrait.php:310
+#: includes/traits/WpSecurityHeaderTrait.php:344
 msgid "add new value"
 msgstr "neuen Wert hinzufügen"
 
-#: includes/traits/WpSecurityHeaderTrait.php:312
+#: includes/traits/WpSecurityHeaderTrait.php:346
 msgid "is the placeholder for nonce"
 msgstr "ist der Platzhalter für nonce"
 
-#: includes/traits/WpSecurityHeaderTrait.php:313
+#: includes/traits/WpSecurityHeaderTrait.php:347
 msgid "Restore default"
 msgstr "Standard wiederherstellen"
 
-#: includes/traits/WpSecurityHeaderTrait.php:314
+#: includes/traits/WpSecurityHeaderTrait.php:348
 msgid "active"
 msgstr "aktiv"
 
-#: includes/traits/WpSecurityHeaderTrait.php:319
+#: includes/traits/WpSecurityHeaderTrait.php:353
 msgid "Minimum requirement for using this function"
 msgstr "Mindestvoraussetzung für die Verwendung dieses Plugins"
 
-#: includes/traits/WpSecurityHeaderTrait.php:320
+#: includes/traits/WpSecurityHeaderTrait.php:354
 msgid "User role"
 msgstr "Benutzerrolle"
 
-#: includes/traits/WpSecurityHeaderTrait.php:322
+#: includes/traits/WpSecurityHeaderTrait.php:356
 msgid "When reloading the default values, the settings are taken into account."
 msgstr ""
 "Beim erneuten Laden der Standardwerte werden die Einstellungen "
 "berücksichtigt."
 
-#: includes/traits/WpSecurityHeaderTrait.php:324
+#: includes/traits/WpSecurityHeaderTrait.php:358
 msgid "Settings for default values"
 msgstr "Einstellungen für Standardwerte"
 
-#: includes/traits/WpSecurityHeaderTrait.php:325
+#: includes/traits/WpSecurityHeaderTrait.php:359
 msgid "Adobe Fonts"
 msgstr "Adobe Fonts"
 
-#: includes/traits/WpSecurityHeaderTrait.php:326
+#: includes/traits/WpSecurityHeaderTrait.php:360
 msgid "Google Apis"
 msgstr "Google Apis"
 
-#: includes/traits/WpSecurityHeaderTrait.php:327
+#: includes/traits/WpSecurityHeaderTrait.php:361
 msgid "Google Fonts"
 msgstr "Google Fonts"
 
-#: includes/traits/WpSecurityHeaderTrait.php:328
+#: includes/traits/WpSecurityHeaderTrait.php:362
 msgid "Google"
 msgstr "Google"
 
