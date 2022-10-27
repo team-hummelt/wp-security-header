@@ -1,4 +1,5 @@
 <?php
+
 namespace WPSecurity\Header;
 
 defined('ABSPATH') or die();
@@ -6,100 +7,131 @@ defined('ABSPATH') or die();
 trait WpSecurityHeaderTrait
 {
     protected array $default_values;
+    protected string $styleSrc = '';
+    protected string $fontSrc = '';
+    protected string $scriptSrc = '';
+    protected string $imgSrc = '';
+    protected string $formAction = '';
+    protected string $connectSrc = '';
+    protected string $baseUri = '';
+    protected int $cspAktiv = 0;
 
-    protected function wp_security_headers_default_settings($args = ''): array
+    protected function wp_security_headers_default_settings($args = '', $csp = []): array
     {
+
+        if ($csp) {
+            if ($csp['csp_aktiv'] == 1) {
+                $this->cspAktiv = 1;
+            }
+            if ($csp['google_fonts']) {
+                $this->styleSrc = ' https://fonts.googleapis.com';
+                $this->fontSrc = ' fonts.gstatic.com';
+            }
+
+            if ($csp['google_apis']) {
+                $this->imgSrc = ' https://*.googleapis.com https://*.gstatic.com *.google.com *.googleusercontent.com';
+                $this->formAction = ' *.google.com';
+                $this->connectSrc = ' https://*.googleapis.com *.google.com https://*.gstatic.com';
+                $this->baseUri = ' *.google.com';
+            }
+            if ($csp['adobe_fonts']) {
+                $this->scriptSrc = ' use.typekit.net';
+                $this->styleSrc .= ' use.typekit.net';
+                $this->imgSrc .= ' p.typekit.net';
+                $this->connectSrc .= ' performance.typekit.net';
+            }
+        }
         $this->default_values = [
             'header' => [
                 'csp' => [
                     '0' => [
                         'name' => 'default-src',
                         'value' => "'none'",
-                        'aktiv' => 0,
+                        'aktiv' => $this->cspAktiv,
                         'id' => 1,
                         'help' => '',
                     ],
                     '1' => [
                         'name' => 'object-src',
                         'value' => "'none'",
-                        'aktiv' => 0,
+                        'aktiv' => $this->cspAktiv,
                         'id' => 2,
                         'help' => '',
                     ],
                     '2' => [
                         'name' => 'script-src',
-                        'value' => "'self' https: http:%s 'strict-dynamic'",
-                        'aktiv' => 0,
+                        'value' => "'self' https: http:%s 'strict-dynamic' $this->scriptSrc",
+                        'aktiv' => $this->cspAktiv,
                         'id' => 3,
                         'help' => '',
                     ],
                     '3' => [
                         'name' => 'style-src',
-                        'value' => "'self' 'unsafe-inline' 'strict-dynamic' https://fonts.googleapis.com",
-                        'aktiv' => 0,
+                        'value' => "'self' 'unsafe-inline' $this->styleSrc",
+                        'aktiv' => $this->cspAktiv,
                         'id' => 4,
                         'help' => '',
                     ],
                     '4' => [
                         'name' => 'img-src',
-                        'value' => "'self' https://*.googleapis.com https://*.gstatic.com *.google.com *.googleusercontent.com data: *",
-                        'aktiv' => 0,
+                        'value' => "'self' $this->imgSrc data: *",
+                        'aktiv' => $this->cspAktiv,
                         'id' => 5,
                         'help' => '',
                     ],
                     '5' => [
                         'name' => 'form-action',
-                        'value' => "'self' *.google.com",
-                        'aktiv' => 0,
+                        'value' => "'self' $this->formAction",
+                        'aktiv' => $this->cspAktiv,
                         'id' => 6,
                         'help' => '',
                     ],
                     '6' => [
                         'name' => 'connect-src',
-                        'value' => "'self' https://*.googleapis.com *.google.com https://*.gstatic.com data: blob:",
-                        'aktiv' => 0,
+                        'value' => "'self' $this->connectSrc data: blob:",
+                        'aktiv' => $this->cspAktiv,
                         'id' => 7,
                         'help' => '',
                     ],
                     '7' => [
                         'name' => 'frame-ancestors',
                         'value' => "'self'",
-                        'aktiv' => 0,
+                        'aktiv' => $this->cspAktiv,
                         'id' => 8,
                         'help' => '',
                     ],
                     '8' => [
                         'name' => 'base-uri',
-                        'value' => "'self' *.google.com",
-                        'aktiv' => 0,
+                        'value' => "'self' $this->baseUri",
+                        'aktiv' => $this->cspAktiv,
                         'id' => 9,
                         'help' => '',
                     ],
                     '9' => [
                         'name' => 'media-src',
                         'value' => "*",
-                        'aktiv' => 0,
+                        'aktiv' => $this->cspAktiv,
                         'id' => 10,
                         'help' => '',
                     ],
                     '10' => [
                         'name' => 'font-src',
-                        'value' => "https://fonts.gstatic.com * data:",
-                        'aktiv' => 0,
+                        'value' => "$this->fontSrc * data:",
+                        'aktiv' => $this->cspAktiv,
                         'id' => 11,
                         'help' => '',
                     ],
                     '11' => [
                         'name' => 'worker-src',
                         'value' => "blob:",
-                        'aktiv' => 0,
+                        'aktiv' => $this->cspAktiv,
                         'id' => 12,
                         'help' => '',
                     ],
                     '13' => [
                         'name' => 'child-src',
                         'value' => "*",
-                        'aktiv' => 0,
+                        'aktiv' => $this->cspAktiv,
                         'id' => 14,
                         'help' => '',
                     ],
@@ -268,31 +300,33 @@ trait WpSecurityHeaderTrait
                 //Bitte Eingaben überprüfen.
                 'check_entry' => __('Please check entries.', 'wp-security-header'),
                 //Header Eintrag löschen
-                'delete_header' =>  __('Delete header entry', 'wp-security-header'),
+                'delete_header' => __('Delete header entry', 'wp-security-header'),
                 //<span class="swal-delete-body">Der Header Eintrag wird <b>unwiderruflich gelöscht!</b> Das Löschen kann <b>nicht</b> rückgängig gemacht werden.</span>
-                'delete_header_html' => __('<span class="swal-delete-body">The header entry will <b>be deleted irrevocably!</b> The deletion <b>cannot</b> be undone.</span>','wp-security-header'),
+                'delete_header_html' => __('<span class="swal-delete-body">The header entry will <b>be deleted irrevocably!</b> The deletion <b>cannot</b> be undone.</span>', 'wp-security-header'),
                 //PIN eingeben
-                'enter_pin' =>  __('Enter PIN', 'wp-security-header'),
+                'enter_pin' => __('Enter PIN', 'wp-security-header'),
                 //Geben Sie den PIN zum löschen ein.
                 'enter_pin_label' => __('Enter the PIN for deletion.', 'wp-security-header'),
                 //Der eingegebene PIN ist falsch!
-                'pin_incorrect' => __('The PIN entered is incorrect!','wp-security-header'),
+                'pin_incorrect' => __('The PIN entered is incorrect!', 'wp-security-header'),
                 'Cancel' => __('Cancel', 'wp-security-header'),
                 //Alle Werte werden <b>zurückgesetzt!</b> Die Änderungen können <b>nicht</b> rückgängig gemacht werden.<br><br>
-                'reset_html' => __('All values are <b>reset!</b> The changes <b>cannot</b> be undone.<br><br>','wp-security-header'),
+                'reset_html' => __('All values are <b>reset!</b> The changes <b>cannot</b> be undone.<br><br>', 'wp-security-header'),
                 //Einstellungen zurückgesetzt!
                 'settings_reset' => __('Settings reset!', 'wp-security-header'),
                 //Einstellungen zurücksetzen?
                 'reset_settings' => __('Reset settings?', 'wp-security-header'),
                 //Alle Einstellungen zurücksetzen
                 'reset_all_settings' => __('Reset all settings', 'wp-security-header'),
+                __('Plugin has been disabled.','wp-security-header'),
+                __('Contact the support.' ,'wp-security-header')
 
-                ],
+            ],
         ];
 
-        if($args) {
-            foreach ($this->default_values as $key => $val){
-                if($key == $args){
+        if ($args) {
+            foreach ($this->default_values as $key => $val) {
+                if ($key == $args) {
                     return $val;
                 }
             }
@@ -317,7 +351,15 @@ trait WpSecurityHeaderTrait
             __('Saved', 'wp-security-header'),
             __('Changes saved successfully.', 'wp-security-header'),
             __('Minimum requirement for using this function', 'wp-security-header'),
-            __('User role', 'wp-security-header')
+            __('User role', 'wp-security-header'),
+            //Beim erneuten Laden der Standardwerte werden die Einstellungen berücksichtigt.
+            __('When reloading the default values, the settings are taken into account.', 'wp-security-header'),
+            //Einstellungen für Standardwerte
+            __('Settings for default values', 'wp-security-header'),
+            __('Adobe Fonts', 'wp-security-header'),
+            __('Google Apis', 'wp-security-header'),
+            __('Google Fonts', 'wp-security-header'),
+            __('Google', 'wp-security-header')
         ];
     }
 }

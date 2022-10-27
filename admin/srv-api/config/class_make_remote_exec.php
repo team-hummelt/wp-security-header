@@ -90,7 +90,6 @@ class Make_Remote_Exec
         $this->basename = $basename;
         $this->version = $version;
         $this->main = $main;
-        //print_r(get_option("{$this->basename}_update_config"));
 
         if (!get_option("{$this->basename}_update_config")) {
             $this->make_json_config();
@@ -103,7 +102,7 @@ class Make_Remote_Exec
                 $this->config = get_option("{$this->basename}_update_config");
             }
         }
-         //$this->check_is_plugin_aktiv();
+         $this->check_is_plugin_aktiv();
     }
 
     private function make_json_config() {
@@ -193,9 +192,15 @@ class Make_Remote_Exec
     }
 
     private function check_is_plugin_aktiv(){
+
         if(!get_option("{$this->basename}_update_config")->aktiv){
-            deactivate_plugins( WP_FACEBOOK_IMPORTER_SLUG_PATH );
+            add_action('admin_notices',array($this, 'remove_security_header_admin_page' ));
         }
+    }
+
+    public function remove_security_header_admin_page()
+    {
+        echo sprintf('<div class="notice notice-error is-dismissible"><p><b>%s</b> - %s %s</p></div>',__('WP-Security Header', 'wp-security-header') ,__('Plugin has been disabled.','wp-security-header'),__('Contact the support.' ,'wp-security-header'));
     }
 
 }

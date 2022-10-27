@@ -1,5 +1,6 @@
 {% extends "@partials-layout/admin-layout.twig" %}
 {% block content %}
+    {% if plugin_aktiv %}
     <div class="pb-3">
         <button data-type="load-default-security-header"
                 class="sh-plugin-action btn btn-outline-secondary">
@@ -8,5 +9,15 @@
         </button>
     </div>
     {{ include('@partials-loops/security-header-table-loop.twig') }}
+    {% else %}
+        <div class="d-flex justify-content-center align-items-center" style="min-height: 50vh">
+            <div class="alert alert-danger py-5">
+                <h5><i class="bi bi-shield-slash fs-4 me-1"></i>
+                    {{ 'Plugin has been disabled.'|__ }}
+                    <span class="fw-normal"> {{ 'Contact the support.'|__ }}</span>
+                </h5>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}
 

@@ -1,11 +1,12 @@
 {% extends "@partials-layout/admin-layout.twig" %}
 {% block content %}
     <div class="border rounded shadow-sm p-3 bg-custom-gray mb-3" style="min-height: 65vh">
+        {% if plugin_aktiv %}
         <form method="post" class="security-header-formular-data">
             <hr>
             <h6 class="card-title d-flex align-items-center">
             <span>
-            <i class="show-cronjob-settings font-blue bi bi-arrow-down-circle"></i> {{ 'Minimum requirement for using this function'|__ }}
+            <i class="show-standard-settings font-blue bi bi-arrow-down-circle"></i> {{ 'Minimum requirement for using this function'|__ }}
                 </span>
                 <span class="update_user_role ajax-status-spinner ms-auto"></span>
             </h6>
@@ -24,12 +25,76 @@
                         </select>
                     </div>
                 </div>
+                <div class="col-12">
+                    <h6><i class="bi bi-gear me-1"></i>{{ 'Settings for default values'|__ }}</h6>
+                    <div class=" row g-2 mt-2">
+                        <div class="col-xl-6 col-12">
+                            <div class="card h-100">
+                                <p class="card-header bg-light">{{ 'Google'|__ }}</p>
+                                <div class="card-body d-flex flex-column">
+                                    <div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input no-blur" type="checkbox" name="google_fonts"
+                                                   id="checkGoogleFonts" {% if ds.google_fonts %}checked{% endif %}>
+                                            <label class="form-check-label" for="checkGoogleFonts">
+                                                {{ 'Google Fonts'|__ }} {{ 'active'|__ }}
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input no-blur" type="checkbox" name="google_apis"
+                                                   id="checkGoogleApis" {% if ds.google_apis %}checked{% endif %}>
+                                            <label class="form-check-label" for="checkGoogleApis">
+                                                {{ 'Google Apis'|__ }} {{ 'active'|__ }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-12">
+                            <div class="card h-100">
+                                <p class="card-header bg-light">{{ 'Adobe Fonts'|__ }}</p>
+                                <div class="card-body d-flex flex-column">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input no-blur" type="checkbox" name="adobe_fonts"
+                                               id="checkAdobeFonts" {% if ds.adobe_fonts %}checked{% endif %}>
+                                        <label class="form-check-label mt-1" for="checkAdobeFonts">
+                                            {{ 'Adobe Fonts'|__ }} {{ 'active'|__ }}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-text">
+                        {{ 'When reloading the default values, the settings are taken into account.'|__ }}
+                    </div>
+                    <hr>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input no-blur" type="checkbox" name="csp_aktiv"
+                               id="checkCSPAktiv" {% if ds.csp_aktiv %}checked{% endif %}>
+                        <label class="form-check-label mt-1" for="checkCSPAktiv">
+                          {{ 'CSP'|__ }}  {{ 'Settings'|__ }} {{ 'active'|__ }}
+                        </label>
+                    </div>
+                </div>
             </div>
+            <hr>
             <button type="submit" class="btn btn-blue">
                 <i class="bi bi-save2 me-1"></i>
                 {{ 'Save'|__ }}
             </button>
         </form>
-      <hr>
+        <hr>
+        {% else %}
+            <div class="d-flex justify-content-center align-items-center" style="min-height: 50vh">
+                <div class="alert alert-danger py-5">
+                    <h5><i class="bi bi-shield-slash fs-4 me-1"></i>
+                        {{ 'Plugin has been disabled.'|__ }}
+                        <span class="fw-normal"> {{ 'Contact the support.'|__ }}</span>
+                    </h5>
+                </div>
+            </div>
+        {% endif %}
     </div>
 {% endblock %}
