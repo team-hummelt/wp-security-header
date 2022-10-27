@@ -257,7 +257,7 @@ class WP_Security_Header_Ajax
                 $responseJson->msg = __('Changes saved successfully.', 'wp-security-header');
                 break;
             case'load-default-security-header':
-                $headers = $this->wp_security_headers_default_settings('header');
+                $headers = $this->wp_security_headers_default_settings('header', get_option($this->basename.'_csp_settings'));
                 update_option($this->basename.'-plugin_security_header', $headers);
                 $responseJson->status = true;
                 $responseJson->msg = __('Settings reset!', 'wp-security-header');
@@ -270,7 +270,20 @@ class WP_Security_Header_Ajax
                     return $responseJson;
                 }
 
-                update_option('wp_security_reader_user_role', $user_role);
+                update_option($this->basename.'_user_role', $user_role);
+                filter_input(INPUT_POST, 'google_fonts', FILTER_SANITIZE_STRING) ? $google_fonts = 1 : $google_fonts = 0;
+                filter_input(INPUT_POST, 'google_apis', FILTER_SANITIZE_STRING) ? $google_apis = 1 : $google_apis = 0;
+                filter_input(INPUT_POST, 'adobe_fonts', FILTER_SANITIZE_STRING) ? $adobe_fonts = 1 : $adobe_fonts = 0;
+                filter_input(INPUT_POST, 'csp_aktiv', FILTER_SANITIZE_STRING) ? $csp_aktiv = 1 : $csp_aktiv = 0;
+
+                $s = [
+                    'google_fonts' => $google_fonts,
+                    'google_apis' => $google_apis,
+                    'adobe_fonts' => $adobe_fonts,
+                    'csp_aktiv' => $csp_aktiv,
+                ];
+                update_option($this->basename.'_csp_settings', $s);
+
                 $responseJson->status = true;
                 $responseJson->title = __('Saved', 'wp-security-header');
                 $responseJson->msg = __('Changes saved successfully.', 'wp-security-header');

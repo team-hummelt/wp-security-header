@@ -87,7 +87,7 @@ class Wp_Security_Header_Admin {
         $hook_suffix = add_menu_page(
             __('Security Header', 'wp-security-header'),
             __('Security Header', 'wp-security-header'),
-            get_option('wp_security_reader_user_role'),
+            get_option($this->basename.'_user_role'),
             'wp-security-header-start',
             array($this, 'admin_wp_security_header_startpage'),
             self::get_svg_icons('shield'), 116
@@ -99,7 +99,7 @@ class Wp_Security_Header_Admin {
         $hook_suffix = add_options_page(
             __('Security Header', 'wp-security-header'),
             __('Security Header', 'wp-security-header'),
-            get_option('wp_security_reader_user_role'),
+            get_option($this->basename.'_user_role'),
             'wp-security-header-options',
             array($this, 'admin_wp_security_header_options_page')
         );
@@ -114,7 +114,7 @@ class Wp_Security_Header_Admin {
      */
     public static function wp_security_header_plugin_add_action_link($data): array
     {
-        if (!current_user_can(get_option('wp_security_reader_user_role'))) {
+        if (!current_user_can(get_option('wp-security-header_user_role'))) {
             return $data;
         }
         return array_merge(
@@ -183,7 +183,8 @@ class Wp_Security_Header_Admin {
             'db' => $this->main->get_db_version(),
             'second_title' => __('Settings', 'wp-security-header'),
             'select_role' =>  $this->wp_security_headers_default_settings('select_user_role'),
-            'set_role' => get_option('wp_security_reader_user_role')
+            'set_role' => get_option($this->basename.'_user_role'),
+            'ds' => get_option($this->basename.'_csp_settings')
         ];
         try {
             echo $this->main->get_twig()->render('@partials-page/wp-security-header-options.twig', $twigData);

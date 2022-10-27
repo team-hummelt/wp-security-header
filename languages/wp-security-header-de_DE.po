@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2022-10-27 00:37+0200\n"
-"PO-Revision-Date: 2022-10-27 00:37+0200\n"
+"POT-Creation-Date: 2022-10-27 16:22+0200\n"
+"PO-Revision-Date: 2022-10-27 16:23+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -19,9 +19,10 @@ msgstr ""
 #: admin/ajax/class_wp_security_header_ajax.php:129
 #: admin/ajax/class_wp_security_header_ajax.php:164
 #: admin/ajax/class_wp_security_header_ajax.php:171
-#: admin/ajax/class_wp_security_header_ajax.php:201
-#: admin/ajax/class_wp_security_header_ajax.php:208
-#: admin/ajax/class_wp_security_header_ajax.php:247
+#: admin/ajax/class_wp_security_header_ajax.php:202
+#: admin/ajax/class_wp_security_header_ajax.php:209
+#: admin/ajax/class_wp_security_header_ajax.php:248
+#: admin/ajax/class_wp_security_header_ajax.php:268
 #: includes/traits/WpSecurityHeaderTrait.php:316
 msgid "Error"
 msgstr "Fehler"
@@ -29,24 +30,29 @@ msgstr "Fehler"
 #: admin/ajax/class_wp_security_header_ajax.php:130
 #: admin/ajax/class_wp_security_header_ajax.php:165
 #: admin/ajax/class_wp_security_header_ajax.php:172
-#: admin/ajax/class_wp_security_header_ajax.php:202
-#: admin/ajax/class_wp_security_header_ajax.php:209
-#: admin/ajax/class_wp_security_header_ajax.php:248
+#: admin/ajax/class_wp_security_header_ajax.php:203
+#: admin/ajax/class_wp_security_header_ajax.php:210
+#: admin/ajax/class_wp_security_header_ajax.php:249
+#: admin/ajax/class_wp_security_header_ajax.php:269
 #: includes/traits/WpSecurityHeaderTrait.php:315
 msgid "Ajax transmission error"
 msgstr "Ajax-Übermittlungsfehler"
 
-#: admin/ajax/class_wp_security_header_ajax.php:255
+#: admin/ajax/class_wp_security_header_ajax.php:194
+#: admin/ajax/class_wp_security_header_ajax.php:256
+#: admin/ajax/class_wp_security_header_ajax.php:275
 #: includes/traits/WpSecurityHeaderTrait.php:317
 msgid "Saved"
 msgstr "Gespeichert"
 
-#: admin/ajax/class_wp_security_header_ajax.php:256
+#: admin/ajax/class_wp_security_header_ajax.php:195
+#: admin/ajax/class_wp_security_header_ajax.php:257
+#: admin/ajax/class_wp_security_header_ajax.php:276
 #: includes/traits/WpSecurityHeaderTrait.php:318
 msgid "Changes saved successfully."
 msgstr "Änderungen erfolgreich gespeichert."
 
-#: admin/ajax/class_wp_security_header_ajax.php:262
+#: admin/ajax/class_wp_security_header_ajax.php:263
 #: includes/traits/WpSecurityHeaderTrait.php:284
 msgid "Settings reset!"
 msgstr "Einstellungen zurückgesetzt!"
@@ -180,6 +186,32 @@ msgstr "Mindestvoraussetzung für die Verwendung dieses Plugins"
 #: includes/traits/WpSecurityHeaderTrait.php:320
 msgid "User role"
 msgstr "Benutzerrolle"
+
+#: includes/traits/WpSecurityHeaderTrait.php:322
+msgid "When reloading the default values, the settings are taken into account."
+msgstr ""
+"Beim erneuten Laden der Standardwerte werden die Einstellungen "
+"berücksichtigt."
+
+#: includes/traits/WpSecurityHeaderTrait.php:324
+msgid "Settings for default values"
+msgstr "Einstellungen für Standardwerte"
+
+#: includes/traits/WpSecurityHeaderTrait.php:325
+msgid "Adobe Fonts"
+msgstr "Adobe Fonts"
+
+#: includes/traits/WpSecurityHeaderTrait.php:326
+msgid "Google Apis"
+msgstr "Google Apis"
+
+#: includes/traits/WpSecurityHeaderTrait.php:327
+msgid "Google Fonts"
+msgstr "Google Fonts"
+
+#: includes/traits/WpSecurityHeaderTrait.php:328
+msgid "Google"
+msgstr "Google"
 
 #: includes/vendor/yahnis-elsts/plugin-update-checker/Puc/v4p13/Plugin/Ui.php:54
 msgid "View details"

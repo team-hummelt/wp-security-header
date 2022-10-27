@@ -363,8 +363,19 @@ class Wp_Security_Header {
 	 */
 	private function define_admin_hooks() {
 
-        if (!get_option('wp_security_reader_user_role')) {
-            update_option('wp_security_reader_user_role', 'manage_options');
+        if (!get_option($this->plugin_name.'_user_role')) {
+            update_option($this->plugin_name.'_user_role', 'manage_options');
+        }
+
+        if (!get_option($this->plugin_name.'_csp_settings')) {
+
+            $s = [
+                'google_fonts' => 1,
+                'google_apis' => 1,
+                'adobe_fonts' => 1,
+                'csp_aktiv' => 0
+            ];
+            update_option($this->plugin_name.'_csp_settings', $s);
         }
 
 		$plugin_admin = new Wp_Security_Header_Admin( $this->get_plugin_name(), $this->get_version(), $this->main, $this->twig );
