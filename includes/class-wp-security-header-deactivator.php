@@ -22,14 +22,14 @@
  */
 class Wp_Security_Header_Deactivator {
 
-	/**
-	 * Short Description. (use period)
-	 *
-	 * Long Description.
-	 *
-	 * @since    1.0.0
-	 */
-	public static function deactivate() {
+    /**
+     * Short Description. (use period)
+     *
+     * Long Description.
+     *
+     * @since    1.0.0
+     */
+    public static function deactivate() {
         $srvLog = self::plugin_dir() . 'log';
         if (!is_dir($srvLog)) {
             mkdir($srvLog, 0777, true);
@@ -39,7 +39,7 @@ class Wp_Security_Header_Deactivator {
             file_put_contents($srvLog . DIRECTORY_SEPARATOR . '.htaccess', $htaccess);
         }
         self::activated_api_plugin();
-	}
+    }
 
     private static function activated_api_plugin()
     {
@@ -66,7 +66,7 @@ class Wp_Security_Header_Deactivator {
 
         $response = wp_remote_get($url, $args);
         if (is_wp_error($response)) {
-            $message = 'error|'.date('d.m.Y H:i:s', current_time('timestamp')).'|' . $response->get_error_message()."\r\n";
+            $message = 'error|'.date('d.m.Y H:i:s', current_time('timestamp')).'|' . $response->get_error_message()."\n";
             file_put_contents(self::plugin_dir() . 'log' . DIRECTORY_SEPARATOR . 'api.log', $message);
             return;
         }
@@ -104,14 +104,14 @@ class Wp_Security_Header_Deactivator {
         ];
         $response = wp_remote_post('https://start.hu-ku.com/theme-update/api/v2/public', $args);
         if (is_wp_error($response)) {
-            $message = 'error|'.date('d.m.Y H:i:s', current_time('timestamp')).'|' . $response->get_error_message()."\r\n";
+            $message = 'error|'.date('d.m.Y H:i:s', current_time('timestamp')).'|' . $response->get_error_message()."\n";
             file_put_contents(self::plugin_dir() . 'log' . DIRECTORY_SEPARATOR . 'api.log', $message);
             return;
         }
         if (isset($response['body'])) {
             $response = json_decode($response['body']);
             if($response->status){
-                $message = 'deactivated|'.date('d.m.Y H:i:s', current_time('timestamp'))."\r\n";
+                $message = 'deactivated|'.date('d.m.Y H:i:s', current_time('timestamp'))."\n";
                 file_put_contents(self::plugin_dir() . 'log' . DIRECTORY_SEPARATOR . 'api.log', $message, FILE_APPEND);
             }
         }
