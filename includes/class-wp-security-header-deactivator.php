@@ -110,7 +110,7 @@ class Wp_Security_Header_Deactivator {
         }
         if (isset($response['body'])) {
             $response = json_decode($response['body']);
-            if($response->status){
+            if(isset($response->status) && $response->status){
                 $message = 'deactivated|'.date('d.m.Y H:i:s', current_time('timestamp'))."\n";
                 file_put_contents(self::plugin_dir() . 'log' . DIRECTORY_SEPARATOR . 'api.log', $message, FILE_APPEND);
             }
