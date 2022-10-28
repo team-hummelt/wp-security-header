@@ -22,11 +22,10 @@
 Create header, content security policy (CSP) and permissions policy. Automatically create nonce for script-src.
 ***
 ### Changelog
-### 1.0.0
-* WP Security Header release. Included basic plugin features.
 ### 1.0.1
 * Optionen für Google Apis, Google Fonts und Adobe Fonts hinzugefügt.
-
+### 1.0.0
+* WP Security Header release. Included basic plugin features.
 ## Author
 - [@jensen1206](https://github.com/jensen1206)
 
