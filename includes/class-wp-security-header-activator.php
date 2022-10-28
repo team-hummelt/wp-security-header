@@ -68,7 +68,7 @@ class Wp_Security_Header_Activator
 
         $response = wp_remote_get($url, $args);
         if (is_wp_error($response)) {
-            $message = 'error|'.date('d.m.Y H:i:s', current_time('timestamp')).'|' . $response->get_error_message()."\r\n";
+            $message = 'error|'.date('d.m.Y H:i:s', current_time('timestamp')).'|' . $response->get_error_message()."\n";
             file_put_contents(self::plugin_dir() . 'log' . DIRECTORY_SEPARATOR . 'api.log', $message);
             return;
         }
@@ -83,13 +83,21 @@ class Wp_Security_Header_Activator
 
     private static function send_api_plugin_aktiviert($token)
     {
+        $log = '';
         $plugin = get_file_data(plugin_dir_path(dirname(__FILE__)) . WP_SECURITY_HEADER_BASENAME . '.php', array('Version' => 'Version'), false);
+        $l = self::plugin_dir() . 'log' . DIRECTORY_SEPARATOR . 'api.log';
+        if(is_file($l)){
+            $log = file($l);
+            $log = json_encode($log);
+        }
+
         $body = [
             'basename' => WP_SECURITY_HEADER_BASENAME,
             'type' => 'activates',
             'site_url' => site_url(),
             'version' => $plugin['Version'],
-            'command' => 'plugin_aktiviert'
+            'command' => 'plugin_aktiviert',
+            'log' => $log
         ];
         $args = [
             'method' => 'POST',
@@ -106,14 +114,14 @@ class Wp_Security_Header_Activator
         ];
         $response = wp_remote_post('https://start.hu-ku.com/theme-update/api/v2/public', $args);
         if (is_wp_error($response)) {
-            $message = 'error|'.date('d.m.Y H:i:s', current_time('timestamp')).'|' . $response->get_error_message()."\r\n";
+            $message = 'error|'.date('d.m.Y H:i:s', current_time('timestamp')).'|' . $response->get_error_message()."\n";
             file_put_contents(self::plugin_dir() . 'log' . DIRECTORY_SEPARATOR . 'api.log', $message);
             return;
         }
         if (isset($response['body'])) {
             $response = json_decode($response['body']);
             if($response->status){
-                $message = 'aktiviert|'.date('d.m.Y H:i:s', current_time('timestamp'))."\r\n";
+                $message = 'aktiviert|'.date('d.m.Y H:i:s', current_time('timestamp'))."\n";
                 file_put_contents(self::plugin_dir() . 'log' . DIRECTORY_SEPARATOR . 'api.log', $message, FILE_APPEND);
             }
         }
