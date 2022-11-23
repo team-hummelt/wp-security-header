@@ -106,7 +106,7 @@ class WP_Security_Header_Ajax
         $this->method = '';
         if (isset($_POST['daten'])) {
             $this->data = $_POST['daten'];
-            $this->method = filter_var($this->data['method'], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+            $this->method = filter_var($this->data['method'], FILTER_UNSAFE_RAW , FILTER_FLAG_STRIP_HIGH);
         }
 
         if (!$this->method) {
@@ -124,7 +124,7 @@ class WP_Security_Header_Ajax
         switch ($this->method) {
             case'add-header-config':
                 $responseJson->type = $this->method;
-                $handle = filter_input(INPUT_POST, 'handle', FILTER_SANITIZE_STRING);
+                $handle = filter_input(INPUT_POST, 'handle', FILTER_UNSAFE_RAW );
                 if (!$handle) {
                     $responseJson->title = __('Error', 'wp-security-header');
                     $responseJson->msg = __('Ajax transmission error', 'bootscore') . ' (Ajx - ' . __LINE__ . ')';
@@ -158,7 +158,7 @@ class WP_Security_Header_Ajax
                 $responseJson->status = true;
                 break;
             case'delete-security-header':
-                $handle = filter_input(INPUT_POST, 'handle', FILTER_SANITIZE_STRING);
+                $handle = filter_input(INPUT_POST, 'handle', FILTER_UNSAFE_RAW );
                 $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
                 if (!$handle) {
                     $responseJson->title = __('Error', 'wp-security-header');
@@ -197,7 +197,7 @@ class WP_Security_Header_Ajax
                 $responseJson->handle = $handle;
                 break;
             case 'security-header-handle':
-                $handle = filter_input(INPUT_POST, 'handle', FILTER_SANITIZE_STRING);
+                $handle = filter_input(INPUT_POST, 'handle', FILTER_UNSAFE_RAW );
                 if (!$handle) {
                     $responseJson->title = __('Error', 'wp-security-header');
                     $responseJson->msg = __('Ajax transmission error', 'wp-security-header') . ' (Ajx - ' . __LINE__ . ')';
@@ -226,8 +226,8 @@ class WP_Security_Header_Ajax
 
                 $arr = [];
                 for ($i = 0; $i < count($id); $i++) {
-                    $w = filter_var($wert[$i], FILTER_SANITIZE_STRING);
-                    $v = filter_var($value[$i], FILTER_SANITIZE_STRING);
+                    $w = filter_var($wert[$i], FILTER_UNSAFE_RAW );
+                    $v = filter_var($value[$i], FILTER_UNSAFE_RAW );
                     if (!$w) {
                         continue;
                     }
@@ -263,7 +263,7 @@ class WP_Security_Header_Ajax
                 $responseJson->msg = __('Settings reset!', 'wp-security-header');
                 break;
             case'update_user_role':
-                $user_role = filter_input(INPUT_POST, 'user_role', FILTER_SANITIZE_STRING);
+                $user_role = filter_input(INPUT_POST, 'user_role', FILTER_UNSAFE_RAW );
                 if(!$user_role) {
                     $responseJson->title = __('Error', 'wp-security-header');
                     $responseJson->msg = __('Ajax transmission error', 'wp-security-header') . ' (Ajx - ' . __LINE__ . ')';
@@ -271,10 +271,10 @@ class WP_Security_Header_Ajax
                 }
 
                 update_option($this->basename.'_user_role', $user_role);
-                filter_input(INPUT_POST, 'google_fonts', FILTER_SANITIZE_STRING) ? $google_fonts = 1 : $google_fonts = 0;
-                filter_input(INPUT_POST, 'google_apis', FILTER_SANITIZE_STRING) ? $google_apis = 1 : $google_apis = 0;
-                filter_input(INPUT_POST, 'adobe_fonts', FILTER_SANITIZE_STRING) ? $adobe_fonts = 1 : $adobe_fonts = 0;
-                filter_input(INPUT_POST, 'csp_aktiv', FILTER_SANITIZE_STRING) ? $csp_aktiv = 1 : $csp_aktiv = 0;
+                filter_input(INPUT_POST, 'google_fonts', FILTER_UNSAFE_RAW ) ? $google_fonts = 1 : $google_fonts = 0;
+                filter_input(INPUT_POST, 'google_apis', FILTER_UNSAFE_RAW ) ? $google_apis = 1 : $google_apis = 0;
+                filter_input(INPUT_POST, 'adobe_fonts', FILTER_UNSAFE_RAW ) ? $adobe_fonts = 1 : $adobe_fonts = 0;
+                filter_input(INPUT_POST, 'csp_aktiv', FILTER_UNSAFE_RAW ) ? $csp_aktiv = 1 : $csp_aktiv = 0;
 
                 $s = [
                     'google_fonts' => $google_fonts,
