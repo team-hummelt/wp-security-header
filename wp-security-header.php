@@ -16,7 +16,7 @@
  * Plugin Name:       WP Security Header
  * Plugin URI:        https://www.hummelt-werbeagentur.de/
  * Description:       Create header, content security policy (CSP) and permissions policy. Automatically create nonce for script-src.
- * Version:           1.0.1
+ * Version:           1.0.2
  * Author:            Jens Wiecker
  * Author URI:        https://wwdh.de
  * License:           MIT License
@@ -24,8 +24,8 @@
  * Domain Path:       /languages
  * Requires PHP:      7.4
  * Requires at least: 5.4
- * Tested up to:      6.0.3
- * Stable tag:        1.0.1
+ * Tested up to:      6.1.1
+ * Stable tag:        1.0.2
  */
 
 // If this file is called directly, abort.
