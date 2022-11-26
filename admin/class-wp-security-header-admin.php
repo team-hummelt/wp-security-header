@@ -170,7 +170,8 @@ class Wp_Security_Header_Admin
             'db' => $this->main->get_db_version(),
             'second_title' => __('Settings', 'wp-security-header'),
             'data' => $items,
-            'plugin_aktiv' => get_option("{$this->basename}_update_config")->aktiv
+            'plugin_aktiv' => get_option("{$this->basename}_update_config")->aktiv,
+            'site_url' => site_url()
         ];
         try {
             echo $this->main->get_twig()->render('@partials-templates/security-header-template.twig', $twigData);

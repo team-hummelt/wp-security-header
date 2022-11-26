@@ -11,9 +11,9 @@
 * Contributors: jwiecker
 * Tags: header, Content-Security-Policy, CSP, Permissions-Policy 
 * Requires at least: 5.4
-* Tested up to: 6.0.3
-* Stable tag: 1.0.1
-* Version: 1.0.1
+* Tested up to: 6.1.1 
+* Stable tag: 1.0.2
+* Version: 1.0.2
 * Requires PHP: 7.4
 * License: MIT License
 
@@ -22,6 +22,9 @@
 Create header, content security policy (CSP) and permissions policy. Automatically create nonce for script-src.
 ***
 ### Changelog
+### 1.0.2
+- PHP 8.1 kompatibel
+- Security Header Test hinzugefügt
 ### 1.0.1
 * Optionen für Google Apis, Google Fonts und Adobe Fonts hinzugefügt.
 ### 1.0.0

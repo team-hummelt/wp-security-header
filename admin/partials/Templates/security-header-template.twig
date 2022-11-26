@@ -1,12 +1,15 @@
 {% extends "@partials-layout/admin-layout.twig" %}
 {% block content %}
     {% if plugin_aktiv %}
-    <div class="pb-3">
+    <div class="pb-3 d-flex flex-wrap">
         <button data-type="load-default-security-header"
                 class="sh-plugin-action btn btn-outline-secondary">
             <i class="bi bi-exclamation-triangle me-1"></i>
             {{ 'Restore default'|__ }}
         </button>
+        <a href="https://webbkoll.dataskydd.net/de?url={{ site_url|url_encode }}" target="_blank" class="btn btn-success ms-auto my-1">
+            <i class="bi bi-box-arrow-up-right me-1"></i> Test -> webkoll|dataskydd.net
+        </a>
     </div>
     {{ include('@partials-loops/security-header-table-loop.twig') }}
     {% else %}
