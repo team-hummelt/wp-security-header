@@ -28,6 +28,15 @@
         xhr.send(formData);
     }
 
+    $(document).on('click', '#checkMatomoAktiv', function () {
+        let inputSubdomain = $('#inputSubdomain');
+        if($(this).prop('checked')){
+            inputSubdomain.prop('readonly', false).prop('required', true);
+        } else {
+            inputSubdomain.prop('readonly', true).prop('required', false);
+        }
+    });
+
     $(document).on('submit', '.security-header-formular-data', function (event) {
         let button = event.originalEvent.submitter;
         let form = $(this).closest("form").get(0);

@@ -117,7 +117,6 @@ class Make_Remote_Exec
 
     public function make_api_exec_job($method, $body)
     {
-
        switch ($method){
            case 'update-config':
                 if(!is_array($body)){

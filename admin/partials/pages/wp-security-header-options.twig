@@ -14,15 +14,14 @@
             <div class="row pt-3 g-2">
                 <input type="hidden" name="method" value="update_user_role">
                 <div class="col-xl-6 col">
-                    <div class="mb-3">
-                        <label for="capabilitySelect" class="form-label mb-1 strong-font-weight">{{ 'User role'|__ }}
-                            :</label>
-                        <select name="user_role" id="capabilitySelect" class="form-select no-blur">
+                    <div class="form-floating mb-3">
+                        <select name="user_role" class="form-select no-blur" id="capabilitySelect" aria-label="{{ 'User role'|__ }}">
                             {% for s in select_role %}
                                 <option value="{{ s.value }}"
                                         {% if s.value == set_role %}selected{% endif %}>{{ s.name }}</option>
                             {% endfor %}
                         </select>
+                        <label for="capabilitySelect">{{ 'User role'|__ }}</label>
                     </div>
                 </div>
                 <div class="col-12">
@@ -65,9 +64,32 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-xl-6 col-12">
+                            <div class="card h-100">
+                                <p class="card-header bg-light">{{ 'Matomo'|__ }}</p>
+                                <div class="card-body d-flex flex-column">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input no-blur" type="checkbox" name="matomo_aktiv"
+                                               id="checkMatomoAktiv" {% if ds.matomo_aktiv %}checked{% endif %}>
+                                        <label class="form-check-label mt-1" for="checkMatomoAktiv">
+                                            {{ 'Matomo'|__ }} {{ 'active'|__ }}
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-floating rounded-0">
+                                    <input type="text" class="form-control no-blur rounded-0 border-start-0 border-end-0"
+                                          value="{{ ds.matomo_subdomain }}" name="matomo_subdomain" id="inputSubdomain" {% if ds.matomo_aktiv %}required{% else %}readonly{% endif %} >
+                                    <label for="inputSubdomain"> {{ 'Matomo'|__ }}  {{ 'Subdomain'|__ }} </label>
+                                </div>
+                                <div class="form-text px-2 pb-3">
+                                    {{ 'Matomo'|__ }} {{ 'Subdomain'|__ }} {{ 'for'|__ }} {{ site_url }}. {{ 'Enter subdomain without dot at the end.'|__ }}
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <hr>
                     <div class="form-text">
-                        {{ 'When reloading the default values, the settings are taken into account.'|__ }}
+                      <i class="bi bi-info-circle-fill text-primary me-1"></i>  {{ 'When reloading the default values, the settings are taken into account.'|__ }}
                     </div>
                     <hr>
                     <div class="form-check form-check-inline">
@@ -75,6 +97,14 @@
                                id="checkCSPAktiv" {% if ds.csp_aktiv %}checked{% endif %}>
                         <label class="form-check-label mt-1" for="checkCSPAktiv">
                           {{ 'CSP'|__ }}  {{ 'Settings'|__ }} {{ 'active'|__ }}
+                        </label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input no-blur" type="checkbox" name="set_meta"
+                               id="checkMetaAktiv" {% if ds.set_meta %}checked{% endif %}>
+                        <label class="form-check-label mt-1" for="checkMetaAktiv">
+                            {{ 'Set Meta Tags'|__ }}
                         </label>
                     </div>
                 </div>

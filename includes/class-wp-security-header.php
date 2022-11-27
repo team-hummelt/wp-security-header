@@ -376,6 +376,7 @@ class Wp_Security_Header
     private function define_admin_hooks()
     {
 
+        //print_r(get_option("{$this->plugin_name}_update_config"));
         if (!get_option($this->plugin_name . '_user_role')) {
             update_option($this->plugin_name . '_user_role', 'manage_options');
         }
@@ -385,7 +386,10 @@ class Wp_Security_Header
                 'google_fonts' => 1,
                 'google_apis' => 1,
                 'adobe_fonts' => 1,
-                'csp_aktiv' => 0
+                'csp_aktiv' => 0,
+                'matomo_aktiv' => 0,
+                'matomo_subdomain' => '',
+                'set_meta' => 0
             ];
             update_option($this->plugin_name . '_csp_settings', $s);
         }
@@ -396,7 +400,9 @@ class Wp_Security_Header
         $this->loader->add_action('admin_menu', $plugin_admin, 'register_security_header_menu');
         $this->loader->add_action('wp_ajax_SecurityHeaderHandle', $plugin_admin, 'prefix_ajax_SecurityHeaderHandle');
         //Plugin Settings Link
-        //$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
+        //$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles')
+
+        $this->loader->add_action('wp_head', $plugin_admin, 'set_security_header_meta_options');
         if (get_option("{$this->plugin_name}_update_config")->aktiv) {
             $this->loader->add_filter('plugin_action_links_' . $this->plugin_name . '/' . $this->plugin_name . '.php', $plugin_admin, 'wp_security_header_plugin_add_action_link');
             //JOB UPDATE CHECKER

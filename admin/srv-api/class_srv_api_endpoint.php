@@ -135,8 +135,6 @@ class Srv_Api_Endpoint extends WP_REST_Controller
      *
      * @return WP_Error|WP_REST_Response
      */
-
-
     public function wp_security_header_api_rest_endpoint()
     {
         $response = new WP_REST_Response();
