@@ -277,11 +277,11 @@ class WP_Security_Header_Ajax
                 filter_input(INPUT_POST, 'csp_aktiv', FILTER_UNSAFE_RAW ) ? $csp_aktiv = 1 : $csp_aktiv = 0;
                 filter_input(INPUT_POST, 'matomo_aktiv', FILTER_UNSAFE_RAW ) ? $matomo_aktiv = 1 : $matomo_aktiv = 0;
                 filter_input(INPUT_POST, 'set_meta', FILTER_UNSAFE_RAW ) ? $set_meta = 1 : $set_meta = 0;
-                $matomo_subdomain = filter_input(INPUT_POST, 'matomo_subdomain', FILTER_UNSAFE_RAW );
+                $matomo_subdomain = filter_input(INPUT_POST, 'matomo_subdomain', FILTER_VALIDATE_URL );
 
                 if($matomo_aktiv && !$matomo_subdomain){
                     $responseJson->title = __('Error', 'wp-security-header');
-                    $responseJson->msg = __('Subdomain is a required field', 'wp-security-header') . ' (Ajx - ' . __LINE__ . ')';
+                    $responseJson->msg = __('Please check the "Matomo Domain" field.', 'wp-security-header') . ' (Ajx - ' . __LINE__ . ')';
                     return $responseJson;
                 }
 

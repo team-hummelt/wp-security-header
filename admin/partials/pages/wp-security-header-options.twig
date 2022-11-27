@@ -77,12 +77,9 @@
                                     </div>
                                 </div>
                                 <div class="form-floating rounded-0">
-                                    <input type="text" class="form-control no-blur rounded-0 border-start-0 border-end-0"
+                                    <input type="url" class="form-control no-blur rounded-0 border-start-0 border-end-0"
                                           value="{{ ds.matomo_subdomain }}" name="matomo_subdomain" id="inputSubdomain" {% if ds.matomo_aktiv %}required{% else %}readonly{% endif %} >
-                                    <label for="inputSubdomain"> {{ 'Matomo'|__ }}  {{ 'Subdomain'|__ }} </label>
-                                </div>
-                                <div class="form-text px-2 pb-3">
-                                    {{ 'Matomo'|__ }} {{ 'Subdomain'|__ }} {{ 'for'|__ }} {{ site_url }}. {{ 'Enter subdomain without dot at the end.'|__ }}
+                                    <label for="inputSubdomain"> {{ 'Matomo'|__ }}  {{ 'Domain'|__ }} </label>
                                 </div>
                             </div>
                         </div>

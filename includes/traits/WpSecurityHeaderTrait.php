@@ -41,11 +41,9 @@ trait WpSecurityHeaderTrait
                 $this->connectSrc .= ' performance.typekit.net';
             }
             if ($csp['matomo_aktiv'] == 1) {
-                $this->isHttps() ? $protokoll = 'https://' : $protokoll = 'http://';
-                $matomo_subdomain = $protokoll . $csp['matomo_subdomain'] . '.' . $_SERVER['HTTP_HOST'];
-                $this->scriptSrc .= ' ' . $matomo_subdomain;
-                $this->connectSrc .= ' ' . $matomo_subdomain;
-                $this->imgSrc .= ' ' . $matomo_subdomain;
+                $this->scriptSrc .= ' ' . $csp['matomo_subdomain'];
+                $this->connectSrc .= ' ' . $csp['matomo_subdomain'];
+                $this->imgSrc .= ' ' . $csp['matomo_subdomain'];
             }
         }
 
@@ -328,13 +326,8 @@ trait WpSecurityHeaderTrait
                 'reset_all_settings' => __('Reset all settings', 'wp-security-header'),
                 __('Plugin has been disabled.','wp-security-header'),
                 __('Contact the support.' ,'wp-security-header'),
-                __('Matomo', 'wp-security-header'),
-                __('Subdomain', 'wp-security-header'),
-                __('subdomain', 'wp-security-header'),
-                __('for', 'wp-security-header'),
-                //Subdomain ohne Punkt am ende eingeben.
-                __('Enter subdomain without dot at the end.', 'wp-security-header'),
-                __('Set Meta Tags', 'wp-security-header')
+                //Bitte das Feld "Matomo Domain" überprüfen.
+                __('Please check the "Matomo Domain" field.', 'wp-security-header')
             ],
         ];
 
@@ -373,7 +366,15 @@ trait WpSecurityHeaderTrait
             __('Adobe Fonts', 'wp-security-header'),
             __('Google Apis', 'wp-security-header'),
             __('Google Fonts', 'wp-security-header'),
-            __('Google', 'wp-security-header')
+            __('Google', 'wp-security-header'),
+            __('Domain', 'wp-security-header'),
+            __('Matomo', 'wp-security-header'),
+            __('Subdomain', 'wp-security-header'),
+            __('subdomain', 'wp-security-header'),
+            __('for', 'wp-security-header'),
+            //Subdomain ohne Punkt am ende eingeben.
+            __('Enter subdomain without dot at the end.', 'wp-security-header'),
+            __('Set Meta Tags', 'wp-security-header')
         ];
     }
 

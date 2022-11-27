@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2022-11-27 14:19+0100\n"
-"PO-Revision-Date: 2022-11-27 14:20+0100\n"
+"POT-Creation-Date: 2022-11-27 15:20+0100\n"
+"PO-Revision-Date: 2022-11-27 15:21+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -24,7 +24,7 @@ msgstr ""
 #: admin/ajax/class_wp_security_header_ajax.php:248
 #: admin/ajax/class_wp_security_header_ajax.php:268
 #: admin/ajax/class_wp_security_header_ajax.php:283
-#: includes/traits/WpSecurityHeaderTrait.php:364
+#: includes/traits/WpSecurityHeaderTrait.php:357
 msgid "Error"
 msgstr "Fehler"
 
@@ -35,32 +35,33 @@ msgstr "Fehler"
 #: admin/ajax/class_wp_security_header_ajax.php:210
 #: admin/ajax/class_wp_security_header_ajax.php:249
 #: admin/ajax/class_wp_security_header_ajax.php:269
-#: includes/traits/WpSecurityHeaderTrait.php:363
+#: includes/traits/WpSecurityHeaderTrait.php:356
 msgid "Ajax transmission error"
 msgstr "Ajax-Übermittlungsfehler"
 
 #: admin/ajax/class_wp_security_header_ajax.php:194
 #: admin/ajax/class_wp_security_header_ajax.php:256
 #: admin/ajax/class_wp_security_header_ajax.php:300
-#: includes/traits/WpSecurityHeaderTrait.php:365
+#: includes/traits/WpSecurityHeaderTrait.php:358
 msgid "Saved"
 msgstr "Gespeichert"
 
 #: admin/ajax/class_wp_security_header_ajax.php:195
 #: admin/ajax/class_wp_security_header_ajax.php:257
 #: admin/ajax/class_wp_security_header_ajax.php:301
-#: includes/traits/WpSecurityHeaderTrait.php:366
+#: includes/traits/WpSecurityHeaderTrait.php:359
 msgid "Changes saved successfully."
 msgstr "Änderungen erfolgreich gespeichert."
 
 #: admin/ajax/class_wp_security_header_ajax.php:263
-#: includes/traits/WpSecurityHeaderTrait.php:324
+#: includes/traits/WpSecurityHeaderTrait.php:322
 msgid "Settings reset!"
 msgstr "Einstellungen zurückgesetzt!"
 
 #: admin/ajax/class_wp_security_header_ajax.php:284
-msgid "Subdomain is a required field"
-msgstr "Subdomain ist ein Pflichtfeld"
+#: includes/traits/WpSecurityHeaderTrait.php:330
+msgid "Please check the \"Matomo Domain\" field."
+msgstr "Bitte das Feld \"Matomo Domain\" überprüfen."
 
 #: admin/class-wp-security-header-admin.php:92
 #: admin/class-wp-security-header-admin.php:93
@@ -68,7 +69,7 @@ msgstr "Subdomain ist ein Pflichtfeld"
 #: admin/class-wp-security-header-admin.php:105
 #: admin/class-wp-security-header-admin.php:169
 #: admin/class-wp-security-header-admin.php:189
-#: includes/traits/WpSecurityHeaderTrait.php:355
+#: includes/traits/WpSecurityHeaderTrait.php:348
 msgid "Security Header"
 msgstr "Security Header"
 
@@ -82,17 +83,17 @@ msgstr "Einstellungen"
 msgid "Method not found."
 msgstr "Methode nicht gefunden."
 
-#: admin/srv-api/config/class_make_remote_exec.php:203
+#: admin/srv-api/config/class_make_remote_exec.php:202
 msgid "WP-Security Header"
 msgstr "WP-Security Header"
 
-#: admin/srv-api/config/class_make_remote_exec.php:203
-#: includes/traits/WpSecurityHeaderTrait.php:329
+#: admin/srv-api/config/class_make_remote_exec.php:202
+#: includes/traits/WpSecurityHeaderTrait.php:327
 msgid "Plugin has been disabled."
 msgstr "Plugin wurde deaktiviert."
 
-#: admin/srv-api/config/class_make_remote_exec.php:203
-#: includes/traits/WpSecurityHeaderTrait.php:330
+#: admin/srv-api/config/class_make_remote_exec.php:202
+#: includes/traits/WpSecurityHeaderTrait.php:328
 msgid "Contact the support."
 msgstr "Melden Sie sich beim Support."
 
@@ -107,35 +108,35 @@ msgstr ""
 "eine WordPress-Version größer als %s benötigt. Ihre PHP-Version kann von "
 "Ihrem Hosting-Anbieter aktualisiert werden."
 
-#: includes/traits/WpSecurityHeaderTrait.php:288
+#: includes/traits/WpSecurityHeaderTrait.php:286
 msgid "Subscriber"
 msgstr "Abonnent"
 
-#: includes/traits/WpSecurityHeaderTrait.php:292
+#: includes/traits/WpSecurityHeaderTrait.php:290
 msgid "Contributor"
 msgstr "Redakteur"
 
-#: includes/traits/WpSecurityHeaderTrait.php:296
+#: includes/traits/WpSecurityHeaderTrait.php:294
 msgid "Author"
 msgstr "Autor"
 
-#: includes/traits/WpSecurityHeaderTrait.php:300
+#: includes/traits/WpSecurityHeaderTrait.php:298
 msgid "Editor"
 msgstr "Redakteur"
 
-#: includes/traits/WpSecurityHeaderTrait.php:304
+#: includes/traits/WpSecurityHeaderTrait.php:302
 msgid "Administrator"
 msgstr "Administrator"
 
-#: includes/traits/WpSecurityHeaderTrait.php:309
+#: includes/traits/WpSecurityHeaderTrait.php:307
 msgid "Please check entries."
 msgstr "Bitte Eingaben überprüfen."
 
-#: includes/traits/WpSecurityHeaderTrait.php:311
+#: includes/traits/WpSecurityHeaderTrait.php:309
 msgid "Delete header entry"
 msgstr "Header Eintrag löschen"
 
-#: includes/traits/WpSecurityHeaderTrait.php:313
+#: includes/traits/WpSecurityHeaderTrait.php:311
 msgid ""
 "<span class=\"swal-delete-body\">The header entry will <b>be deleted "
 "irrevocably!</b> The deletion <b>cannot</b> be undone.</span>"
@@ -143,118 +144,122 @@ msgstr ""
 "<span class=\"swal-delete-body\">Der Header Eintrag wird <b>unwiderruflich "
 "gelöscht!</b> Das Löschen kann <b>nicht</b> rückgängig gemacht werden.</span>"
 
-#: includes/traits/WpSecurityHeaderTrait.php:315
+#: includes/traits/WpSecurityHeaderTrait.php:313
 msgid "Enter PIN"
 msgstr "PIN eingeben"
 
-#: includes/traits/WpSecurityHeaderTrait.php:317
+#: includes/traits/WpSecurityHeaderTrait.php:315
 msgid "Enter the PIN for deletion."
 msgstr "Geben Sie den PIN zum löschen ein."
 
-#: includes/traits/WpSecurityHeaderTrait.php:319
+#: includes/traits/WpSecurityHeaderTrait.php:317
 msgid "The PIN entered is incorrect!"
 msgstr "Der eingegebene PIN ist falsch!"
 
-#: includes/traits/WpSecurityHeaderTrait.php:320
+#: includes/traits/WpSecurityHeaderTrait.php:318
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: includes/traits/WpSecurityHeaderTrait.php:322
+#: includes/traits/WpSecurityHeaderTrait.php:320
 msgid ""
 "All values are <b>reset!</b> The changes <b>cannot</b> be undone.<br><br>"
 msgstr ""
 "Alle Werte werden <b>zurückgesetzt!</b> Die Änderungen können <b>nicht</b> "
 "rückgängig gemacht werden.<br><br>"
 
-#: includes/traits/WpSecurityHeaderTrait.php:326
+#: includes/traits/WpSecurityHeaderTrait.php:324
 msgid "Reset settings?"
 msgstr "Einstellungen zurücksetzen?"
 
-#: includes/traits/WpSecurityHeaderTrait.php:328
+#: includes/traits/WpSecurityHeaderTrait.php:326
 msgid "Reset all settings"
 msgstr "Alle Einstellungen zurücksetzen"
 
-#: includes/traits/WpSecurityHeaderTrait.php:331
-msgid "Matomo"
-msgstr "Matomo"
-
-#: includes/traits/WpSecurityHeaderTrait.php:332
-msgid "Subdomain"
-msgstr "Subdomain"
-
-#: includes/traits/WpSecurityHeaderTrait.php:333
-msgid "subdomain"
-msgstr "subdomain"
-
-#: includes/traits/WpSecurityHeaderTrait.php:334
-msgid "for"
-msgstr "für"
-
-#: includes/traits/WpSecurityHeaderTrait.php:336
-msgid "Enter subdomain without dot at the end."
-msgstr "Geben Sie die Subdomain ohne Punkt am Ende ein."
-
-#: includes/traits/WpSecurityHeaderTrait.php:337
-msgid "Set Meta Tags"
-msgstr "Set Meta Tags"
-
-#: includes/traits/WpSecurityHeaderTrait.php:354
+#: includes/traits/WpSecurityHeaderTrait.php:347
 msgid "sections"
 msgstr "Sektionen"
 
-#: includes/traits/WpSecurityHeaderTrait.php:356
+#: includes/traits/WpSecurityHeaderTrait.php:349
 msgid "Save"
 msgstr "Speichern"
 
-#: includes/traits/WpSecurityHeaderTrait.php:358
+#: includes/traits/WpSecurityHeaderTrait.php:351
 msgid "add new value"
 msgstr "neuen Wert hinzufügen"
 
-#: includes/traits/WpSecurityHeaderTrait.php:360
+#: includes/traits/WpSecurityHeaderTrait.php:353
 msgid "is the placeholder for nonce"
 msgstr "ist der Platzhalter für nonce"
 
-#: includes/traits/WpSecurityHeaderTrait.php:361
+#: includes/traits/WpSecurityHeaderTrait.php:354
 msgid "Restore default"
 msgstr "Standard wiederherstellen"
 
-#: includes/traits/WpSecurityHeaderTrait.php:362
+#: includes/traits/WpSecurityHeaderTrait.php:355
 msgid "active"
 msgstr "aktiv"
 
-#: includes/traits/WpSecurityHeaderTrait.php:367
+#: includes/traits/WpSecurityHeaderTrait.php:360
 msgid "Minimum requirement for using this function"
 msgstr "Mindestvoraussetzung für die Verwendung dieses Plugins"
 
-#: includes/traits/WpSecurityHeaderTrait.php:368
+#: includes/traits/WpSecurityHeaderTrait.php:361
 msgid "User role"
 msgstr "Benutzerrolle"
 
-#: includes/traits/WpSecurityHeaderTrait.php:370
+#: includes/traits/WpSecurityHeaderTrait.php:363
 msgid "When reloading the default values, the settings are taken into account."
 msgstr ""
 "Beim erneuten Laden der Standardwerte werden die Einstellungen "
 "berücksichtigt."
 
-#: includes/traits/WpSecurityHeaderTrait.php:372
+#: includes/traits/WpSecurityHeaderTrait.php:365
 msgid "Settings for default values"
 msgstr "Einstellungen für Standardwerte"
 
-#: includes/traits/WpSecurityHeaderTrait.php:373
+#: includes/traits/WpSecurityHeaderTrait.php:366
 msgid "Adobe Fonts"
 msgstr "Adobe Fonts"
 
-#: includes/traits/WpSecurityHeaderTrait.php:374
+#: includes/traits/WpSecurityHeaderTrait.php:367
 msgid "Google Apis"
 msgstr "Google Apis"
 
-#: includes/traits/WpSecurityHeaderTrait.php:375
+#: includes/traits/WpSecurityHeaderTrait.php:368
 msgid "Google Fonts"
 msgstr "Google Fonts"
 
-#: includes/traits/WpSecurityHeaderTrait.php:376
+#: includes/traits/WpSecurityHeaderTrait.php:369
 msgid "Google"
 msgstr "Google"
+
+#: includes/traits/WpSecurityHeaderTrait.php:370
+msgid "Domain"
+msgstr "Domain"
+
+#: includes/traits/WpSecurityHeaderTrait.php:371
+msgid "Matomo"
+msgstr "Matomo"
+
+#: includes/traits/WpSecurityHeaderTrait.php:372
+msgid "Subdomain"
+msgstr "Subdomain"
+
+#: includes/traits/WpSecurityHeaderTrait.php:373
+msgid "subdomain"
+msgstr "subdomain"
+
+#: includes/traits/WpSecurityHeaderTrait.php:374
+msgid "for"
+msgstr "für"
+
+#: includes/traits/WpSecurityHeaderTrait.php:376
+msgid "Enter subdomain without dot at the end."
+msgstr "Geben Sie die Subdomain ohne Punkt am Ende ein."
+
+#: includes/traits/WpSecurityHeaderTrait.php:377
+msgid "Set Meta Tags"
+msgstr "Set Meta Tags"
 
 #: includes/vendor/yahnis-elsts/plugin-update-checker/Puc/v4p13/Plugin/Ui.php:54
 msgid "View details"
@@ -277,6 +282,9 @@ msgstr "Unbekannter Update-Checker-Status \"%s\""
 #: includes/vendor/yahnis-elsts/plugin-update-checker/Puc/v4p13/Vcs/PluginUpdateChecker.php:100
 msgid "There is no changelog available."
 msgstr "Es ist kein Change Log verfügbar."
+
+#~ msgid "Subdomain is a required field"
+#~ msgstr "Subdomain ist ein Pflichtfeld"
 
 #~ msgid "Alle Einstellungen zurücksetzen"
 #~ msgstr "Alle Einstellungen zurücksetzen"
