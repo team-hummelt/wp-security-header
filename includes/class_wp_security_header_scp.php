@@ -199,6 +199,7 @@ class WP_Security_Header_SCP
             }
 
             if($ah) {
+
                 foreach ($ah as $h) {
                     header($h);
                 }

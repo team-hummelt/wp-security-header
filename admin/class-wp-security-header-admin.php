@@ -192,7 +192,8 @@ class Wp_Security_Header_Admin
             'select_role' => $this->wp_security_headers_default_settings('select_user_role'),
             'set_role' => get_option($this->basename . '_user_role'),
             'ds' => get_option($this->basename . '_csp_settings'),
-            'plugin_aktiv' => get_option("{$this->basename}_update_config")->aktiv
+            'plugin_aktiv' => get_option("{$this->basename}_update_config")->aktiv,
+            'site_url' => site_url()
         ];
         try {
             echo $this->main->get_twig()->render('@partials-page/wp-security-header-options.twig', $twigData);
@@ -230,6 +231,26 @@ class Wp_Security_Header_Admin
         require_once 'ajax/class_wp_security_header_ajax.php';
         $adminAjaxHandle = new WP_Security_Header_Ajax($this->basename, $this->version, $this->main, $this->twig);
         wp_send_json($adminAjaxHandle->wp_security_header_admin_ajax_handle());
+    }
+
+    /**
+     * Register the HEAD for the Plugin.
+     * Set Meta
+     * @since    1.0.0
+     */
+    public function set_security_header_meta_options()
+    {
+        $s = get_option($this->basename . '_csp_settings');
+        if ($s['set_meta']) {
+            $headers = get_option($this->basename . '-plugin_security_header');
+            if ($headers['ah']) {
+                foreach ($headers['ah'] as $h) {
+                    if (isset($h['name']) && $h['name'] == 'Referrer-Policy' && isset($h['aktiv']) && $h['aktiv'] == 1) {
+                        echo '<meta name="referrer" content="no-referrer">' . "\r\n";
+                    }
+                }
+            }
+        }
     }
 
     /**

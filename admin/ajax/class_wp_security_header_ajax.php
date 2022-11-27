@@ -275,12 +275,24 @@ class WP_Security_Header_Ajax
                 filter_input(INPUT_POST, 'google_apis', FILTER_UNSAFE_RAW ) ? $google_apis = 1 : $google_apis = 0;
                 filter_input(INPUT_POST, 'adobe_fonts', FILTER_UNSAFE_RAW ) ? $adobe_fonts = 1 : $adobe_fonts = 0;
                 filter_input(INPUT_POST, 'csp_aktiv', FILTER_UNSAFE_RAW ) ? $csp_aktiv = 1 : $csp_aktiv = 0;
+                filter_input(INPUT_POST, 'matomo_aktiv', FILTER_UNSAFE_RAW ) ? $matomo_aktiv = 1 : $matomo_aktiv = 0;
+                filter_input(INPUT_POST, 'set_meta', FILTER_UNSAFE_RAW ) ? $set_meta = 1 : $set_meta = 0;
+                $matomo_subdomain = filter_input(INPUT_POST, 'matomo_subdomain', FILTER_UNSAFE_RAW );
+
+                if($matomo_aktiv && !$matomo_subdomain){
+                    $responseJson->title = __('Error', 'wp-security-header');
+                    $responseJson->msg = __('Subdomain is a required field', 'wp-security-header') . ' (Ajx - ' . __LINE__ . ')';
+                    return $responseJson;
+                }
 
                 $s = [
                     'google_fonts' => $google_fonts,
                     'google_apis' => $google_apis,
                     'adobe_fonts' => $adobe_fonts,
                     'csp_aktiv' => $csp_aktiv,
+                    'matomo_aktiv' => $matomo_aktiv,
+                    'set_meta' => $set_meta,
+                    'matomo_subdomain' => $matomo_subdomain
                 ];
                 update_option($this->basename.'_csp_settings', $s);
 
@@ -335,5 +347,22 @@ class WP_Security_Header_Ajax
         }
         return preg_replace(['/<!--(.*)-->/Uis', "/[[:blank:]]+/"], ['', ' '], str_replace(["\n", "\r", "\t"], '', $string));
     }
+
+    /*public static function isHttps(): bool
+    {
+        if (array_key_exists("HTTPS", $_SERVER) && 'on' === $_SERVER["HTTPS"]) {
+            return true;
+        }
+        if (array_key_exists("SERVER_PORT", $_SERVER) && 443 === (int)$_SERVER["SERVER_PORT"]) {
+            return true;
+        }
+        if (array_key_exists("HTTP_X_FORWARDED_SSL", $_SERVER) && 'on' === $_SERVER["HTTP_X_FORWARDED_SSL"]) {
+            return true;
+        }
+        if (array_key_exists("HTTP_X_FORWARDED_PROTO", $_SERVER) && 'https' === $_SERVER["HTTP_X_FORWARDED_PROTO"]) {
+            return true;
+        }
+        return false;
+    }*/
 }
 

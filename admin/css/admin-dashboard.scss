@@ -1099,6 +1099,10 @@ body .wp-security-header {
 
 }
 
+input.readonly, input[readonly], textarea.readonly, textarea[readonly] {
+  background-color: #f0f0f1!important;
+}
+
 .swal-success-container {
   background: #FFFFFFFF !important;
   color: #212529FF !important;
